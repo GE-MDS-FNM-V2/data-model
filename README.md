@@ -1,15 +1,15 @@
 # TODO
-[x] Datatype
-[ ] Enumerable DataType
-[x] Named DataType
-[ ] Named Enumerable DataType
-[ ] Indexed Enumerable DataType
-[x] Leaf
-[x] Action
-[ ] Container
-[ ] Map
-[ ] List
-[ ] Leaf Set
+- [x] Datatype
+- [ ] Enumerable DataType
+- [x] Named DataType
+- [ ] Named Enumerable DataType
+- [ ] Indexed Enumerable DataType
+- [x] Leaf
+- [x] Action
+- [ ] Container
+- [ ] Map
+- [ ] List
+- [ ] Leaf Set
 
 ### yarn scripts
  - `yarn start`: Run `yarn run build` in watch mode
