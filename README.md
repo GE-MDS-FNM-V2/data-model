@@ -1,3 +1,16 @@
+# TODO
+[x] Datatype
+[ ] Enumerable DataType
+[x] Named DataType
+[ ] Named Enumerable DataType
+[ ] Indexed Enumerable DataType
+[x] Leaf
+[x] Action
+[ ] Container
+[ ] Map
+[ ] List
+[ ] Leaf Set
+
 ### yarn scripts
  - `yarn start`: Run `yarn run build` in watch mode
  - `yarn run test:watch`: Run test suite in [interactive watch mode](http://facebook.github.io/jest/docs/cli.html#watch)
