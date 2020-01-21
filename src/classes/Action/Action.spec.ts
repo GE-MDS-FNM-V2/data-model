@@ -19,6 +19,11 @@ describe('NamedDataModel', () => {
     expect(type.name).toEqual(name)
   })
 
+  it("Create a DataType with permissions", () => {
+    const type = new Action(name, testPermissions, action)
+    expect(type.permissions).toEqual(testPermissions)
+  })
+
   it("Will run the function", () => {
     const type = new Action(name, testPermissions, action)
     type.run()

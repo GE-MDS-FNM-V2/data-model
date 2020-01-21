@@ -17,6 +17,10 @@ describe('NamedDataModel', () => {
     expect(type.name).toEqual(name)
   })
 
+  it("getName returns name", () => {
+    expect(type.getName()).toEqual(name)
+  })
+
   it("Wont let you directly edit the name", () => {
     //   try{
     //     type.name = "hello world"
