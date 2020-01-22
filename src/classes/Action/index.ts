@@ -12,7 +12,7 @@ export class Action extends DataType {
 
   run() {
     // TODO - trigger ci comment - remove it eventually
-    //asdf
+    // asdf
     this.action()
     this.numberRuns++
   }
