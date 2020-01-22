@@ -3,9 +3,9 @@
   "version": "0.0.0-development",
   "description": "",
   "keywords": [],
-  "main": "dist/data-model.umd.js",
-  "module": "dist/data-model.es5.js",
-  "typings": "dist/types/data-model.d.ts",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es5.js",
+  "typings": "dist/types/index.d.ts",
   "files": [
     "dist/**/*.*"
   ],
