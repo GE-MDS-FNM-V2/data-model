@@ -12,7 +12,8 @@ export class Action extends DataType {
 
   run() {
     this.action()
-
+    // TODO - remove this comment
+    // this is to trigger semantic release
     this.numberRuns++
   }
 }
