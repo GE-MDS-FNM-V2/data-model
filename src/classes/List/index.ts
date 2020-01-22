@@ -1,10 +1,11 @@
-import { NamedDataType } from '../NamedDataType'
 import { PERMISSIONS } from '../../types/permissions'
 import { DataType } from '../DataType'
 import { EXCEEDS_MAX_CHILDREN } from '../../types/errors'
 import { MapFunction } from '../../types/classFunctions'
+import { EnumerableDataType } from '../../types/EnumerableDataType'
+import { NamedDataType } from '../NamedDataType'
 
-export class EnumerableDataType extends NamedDataType {
+export class List extends NamedDataType implements EnumerableDataType {
   children: DataType[]
   maxChildren: number
   length: number
@@ -28,6 +29,7 @@ export class EnumerableDataType extends NamedDataType {
       this.children.push(child)
       this.length = this.children.length
     }
+    return this.children[this.children.length-1]
   }
 
   map(mapFunc: MapFunction) {
@@ -35,7 +37,7 @@ export class EnumerableDataType extends NamedDataType {
     for (let index = 0; index < this.children.length; index++) {
       resultArray.push(mapFunc(this.children[index], index, this.children))
     }
-    return new EnumerableDataType(this.name, this.permissions, resultArray)
+    return new List(this.name, this.permissions, resultArray)
   }
 
   filter(filterFunc: (value: DataType, index: number, array: DataType[]) => boolean) {
@@ -45,7 +47,7 @@ export class EnumerableDataType extends NamedDataType {
         resultArray.push(this.children[index])
       }
     }
-    return new EnumerableDataType(this.name, this.permissions, resultArray)
+    return new List(this.name, this.permissions, resultArray)
   }
 
   contains(item: DataType) {
