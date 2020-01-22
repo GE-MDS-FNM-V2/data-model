@@ -1,6 +1,28 @@
 name: Semantic Release
 on: push
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: 10.16
+    - name: Install dependencies
+      run: yarn install
+    - name: Test
+      run: yarn test:prod
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: 10.16
+    - name: Install dependencies
+      run: yarn install
+    - name: Build
+      run: yarn build
   release:
     runs-on: ubuntu-latest
     steps:
