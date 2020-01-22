@@ -9,6 +9,7 @@
   "files": [
     "dist"
   ],
+  "private": false,
   "author": "Brady Brown <bobrown101@gmail.com>",
   "repository": {
     "type": "git",
