@@ -1,23 +1,22 @@
 import { List } from '../List'
-import { PERMISSIONS } from '../../types/permissions'
+import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
 import { DataType } from '../DataType'
 import { CHILD_ALREADY_EXISTS } from '../../types/errors'
 
 export class Set extends List {
   constructor(
-    name: string,
-    permissions: PERMISSIONS,
     children: DataType[],
-    maxChildren: number = Infinity
+    maxChildren: number = Infinity,
+    permissions: PERMISSIONS = DEFAULT_PERMISSIONS
   ) {
-    super(name, permissions, children, maxChildren)
+    super(children, maxChildren, permissions)
   }
 
-  add(child: DataType){
-    if(this.contains(child)){
-        throw CHILD_ALREADY_EXISTS
-    }else{
-        super.add(child)
+  add(child: DataType) {
+    if (this.contains(child)) {
+      throw CHILD_ALREADY_EXISTS
+    } else {
+      super.add(child)
     }
     return child
   }

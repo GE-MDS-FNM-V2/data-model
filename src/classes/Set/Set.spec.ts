@@ -9,11 +9,10 @@ describe('Set', () => {
     delete: true,
     execute: true
   }
-  const name = 'test-name'
 
   it('Throws error if child already exists', () => {
-    const child = new Leaf('child1', testPermissions, 'child1value')
-    const type = new Set(name, testPermissions, [child])
+    const child = new Leaf('child1value')
+    const type = new Set([child])
     try {
         type.add(child)
         expect(false).toEqual(true)
@@ -24,10 +23,10 @@ describe('Set', () => {
   })
 
   it('Returns new item if successful', () => {
-    const child = new Leaf('child1', testPermissions, 'child1value')
-    const child2 = new Leaf('child2', testPermissions, 'child1value')
+    const child = new Leaf('child1value')
+    const child2 = new Leaf('child2value')
 
-    const type = new Set(name, testPermissions, [child])
+    const type = new Set([child])
         type.add(child2)
         expect(type.length).toEqual(2)
         expect(type.children).toEqual([child, child2])

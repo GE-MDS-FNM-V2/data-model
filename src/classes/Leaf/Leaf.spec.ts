@@ -1,21 +1,12 @@
 import { Leaf } from './index'
 
 describe('Leaf', () => {
-  const testPermissions = {
-    create: true,
-    read: true,
-    update: true,
-    delete: true,
-    execute: true
-  }
-
-
 
   it("Creates a leaf with a string as a value", () => {
     const value = "test-value"
     const name = "test-name"
   
-    const type = new Leaf(name, testPermissions, value)
+    const type = new Leaf(value)
     expect(type.getValue()).toEqual(value)
   })
 
@@ -24,7 +15,7 @@ describe('Leaf', () => {
     const value = [1,2,3]
     const name = "test-name"
   
-    const type = new Leaf(name, testPermissions, value)
+    const type = new Leaf(value)
     expect(type.getValue()).toEqual(value)
   })
 
@@ -32,7 +23,7 @@ describe('Leaf', () => {
     const value = [1,2,"asdf"]
     const name = "test-name"
   
-    const type = new Leaf(name, testPermissions, value)
+    const type = new Leaf(value)
     expect(type.getValue()).toEqual(value)
   })
 

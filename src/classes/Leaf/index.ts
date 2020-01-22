@@ -1,12 +1,12 @@
-import { NamedDataType } from '../NamedDataType';
-import { PERMISSIONS } from '../../types/permissions';
+import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions';
+import { DataType } from '../DataType';
 
 type LeafType = number | string | boolean | null | any[];
 
-export class Leaf extends NamedDataType {
+export class Leaf extends DataType {
   value: LeafType;
-  constructor(name: string, permissions: PERMISSIONS, value: LeafType) {
-    super(name, permissions);
+  constructor(value: LeafType, permissions: PERMISSIONS = DEFAULT_PERMISSIONS) {
+    super(permissions);
     this.value = value;
   }
 

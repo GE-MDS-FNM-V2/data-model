@@ -1,11 +1,11 @@
-import { PERMISSIONS } from "../../types/permissions";
-import { NamedDataType } from "../NamedDataType";
+import { PERMISSIONS, DEFAULT_PERMISSIONS } from "../../types/permissions";
+import { DataType } from "../DataType";
 
-export class Action extends NamedDataType {
+export class Action extends DataType {
     readonly action: Function;
     numberRuns: number;
-    constructor(name: string, permissions: PERMISSIONS, action: Function) {
-        super(name, permissions)
+    constructor(action: Function, permissions: PERMISSIONS = DEFAULT_PERMISSIONS) {
+        super(permissions)
         this.action = action
         this.numberRuns = 0;
     }

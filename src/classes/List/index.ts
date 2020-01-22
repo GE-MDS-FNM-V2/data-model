@@ -1,22 +1,23 @@
-import { PERMISSIONS } from '../../types/permissions'
+import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
 import { DataType } from '../DataType'
 import { EXCEEDS_MAX_CHILDREN } from '../../types/errors'
 import { MapFunction } from '../../types/classFunctions'
 import { EnumerableDataType } from '../../types/EnumerableDataType'
-import { NamedDataType } from '../NamedDataType'
 
-export class List extends NamedDataType implements EnumerableDataType {
+export class List extends DataType implements EnumerableDataType {
   children: DataType[]
   maxChildren: number
   length: number
 
   constructor(
-    name: string,
-    permissions: PERMISSIONS,
-    children: DataType[],
-    maxChildren: number = Infinity
+    children: DataType[] = [],
+    maxChildren: number = Infinity,
+    permissions: PERMISSIONS = DEFAULT_PERMISSIONS
   ) {
-    super(name, permissions)
+    if (children.length > maxChildren) {
+      throw EXCEEDS_MAX_CHILDREN
+    }
+    super(permissions)
     this.children = children
     this.maxChildren = maxChildren
     this.length = this.children.length
@@ -29,7 +30,7 @@ export class List extends NamedDataType implements EnumerableDataType {
       this.children.push(child)
       this.length = this.children.length
     }
-    return this.children[this.children.length-1]
+    return this.children[this.children.length - 1]
   }
 
   map(mapFunc: MapFunction) {
@@ -37,7 +38,7 @@ export class List extends NamedDataType implements EnumerableDataType {
     for (let index = 0; index < this.children.length; index++) {
       resultArray.push(mapFunc(this.children[index], index, this.children))
     }
-    return new List(this.name, this.permissions, resultArray)
+    return new List(resultArray, this.maxChildren, this.permissions)
   }
 
   filter(filterFunc: (value: DataType, index: number, array: DataType[]) => boolean) {
@@ -47,7 +48,7 @@ export class List extends NamedDataType implements EnumerableDataType {
         resultArray.push(this.children[index])
       }
     }
-    return new List(this.name, this.permissions, resultArray)
+    return new List(resultArray, this.maxChildren, this.permissions)
   }
 
   contains(item: DataType) {
