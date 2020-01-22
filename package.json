@@ -7,7 +7,7 @@
   "module": "dist/data-model.es5.js",
   "typings": "dist/types/data-model.d.ts",
   "files": [
-    "dist"
+    "dist/**/*.*"
   ],
   "private": false,
   "author": "Brady Brown <bobrown101@gmail.com>",
