@@ -16,11 +16,4 @@ export interface EnumerableDataType {
   contains(item: DataType): boolean
 
 
-// For Map
-  add(key: String, value: DataType): DataType
-  filter(
-    filterFunc: (keyValuePair: {key: String, value: DataType}, array: DataType[]) => boolean
-  ): EnumerableDataType
-
-  contains(key: String): boolean
 }
