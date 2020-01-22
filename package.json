@@ -45,6 +45,9 @@
       "next"
     ]
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "lint-staged": {
     "{src,test}/**/*.ts": [
       "prettier --write",
