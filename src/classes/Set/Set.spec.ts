@@ -14,11 +14,11 @@ describe('Set', () => {
     const child = new Leaf('child1value')
     const type = new Set([child])
     try {
-        type.add(child)
-        expect(false).toEqual(true)
+      type.add(child)
+      expect(false).toEqual(true)
     } catch (error) {
-        expect(type.length).toEqual(1)
-        expect(type.children).toEqual([child])
+      expect(type.length).toEqual(1)
+      expect(type.children).toEqual([child])
     }
   })
 
@@ -27,9 +27,8 @@ describe('Set', () => {
     const child2 = new Leaf('child2value')
 
     const type = new Set([child])
-        type.add(child2)
-        expect(type.length).toEqual(2)
-        expect(type.children).toEqual([child, child2])
+    type.add(child2)
+    expect(type.length).toEqual(2)
+    expect(type.children).toEqual([child, child2])
   })
-
 })

@@ -18,6 +18,7 @@ export class Set extends List {
     } else {
       super.add(child)
     }
+
     return child
   }
 }

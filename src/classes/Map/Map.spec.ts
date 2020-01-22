@@ -2,12 +2,12 @@ import { Map } from './index'
 import { Leaf } from '../Leaf'
 
 const testPermissions = {
-    create: true,
-    read: true,
-    update: true,
-    delete: true,
-    execute: false
-  }
+  create: true,
+  read: true,
+  update: true,
+  delete: true,
+  execute: false
+}
 describe('Map', () => {
   it('Sets the right permissions', () => {
     const type = new Map({}, Infinity, testPermissions)

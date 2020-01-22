@@ -2,7 +2,6 @@ import { List } from './index'
 import { Leaf } from '../Leaf'
 
 describe('List', () => {
-
   it('Create an List without any children', () => {
     const type = new List([])
     expect(type.children).toEqual([])
@@ -65,7 +64,7 @@ describe('List', () => {
     const child3 = new Leaf('3')
 
     const type = new List([child1, child2, child3])
-    
+
     expect(type.contains(child2)).toEqual(true)
   })
 })
