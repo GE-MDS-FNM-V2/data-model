@@ -31,4 +31,18 @@ describe('Set', () => {
     expect(type.length).toEqual(2)
     expect(type.children).toEqual([child, child2])
   })
+
+  it('Max children is set', () => {
+    const child = new Leaf('child1value')
+
+    const type = new Set([child], 10)
+    expect(type.maxChildren).toEqual(10)
+  })
+
+  it('Permissions is set', () => {
+    const child = new Leaf('child1value')
+
+    const type = new Set([child], 10, testPermissions)
+    expect(type.permissions).toEqual(testPermissions)
+  })
 })
