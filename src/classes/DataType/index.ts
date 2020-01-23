@@ -5,6 +5,7 @@ export class DataType {
 
   constructor(permissions: PERMISSIONS) {
     this.permissions = permissions
+    // This is part of QA for CONTRIBUTING.md
     console.log('\n\nNEW DATATYPE OBJECT HAS BEEN CREATED\n\n')
   }
 
