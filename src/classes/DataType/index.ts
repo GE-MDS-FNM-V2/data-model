@@ -5,7 +5,6 @@ export class DataType {
 
   constructor(permissions: PERMISSIONS) {
     this.permissions = permissions
-    console.log('this is the next version of @ge-fnm/data-model')
   }
 
   update() {
