@@ -5,6 +5,7 @@ export class DataType {
 
   constructor(permissions: PERMISSIONS) {
     this.permissions = permissions
+    console.log('\n\nNEW DATATYPE OBJECT HAS BEEN CREATED\n\n')
   }
 
   update() {
