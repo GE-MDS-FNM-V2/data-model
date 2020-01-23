@@ -1,0 +1,7 @@
+diff a/src/data-model.ts b/src/data-model.ts	(rejected hunks)
+@@ -20 +20 @@ export class YangParser implements Parser {
+-  name = "YangParser"
++  name = 'YangParser'
+@@ -22 +22 @@ export class YangParser implements Parser {
+-  parse(data: string){
++  parse(data: string) {

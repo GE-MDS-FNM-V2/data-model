@@ -1,16 +1,33 @@
 # GE-FNM Data Model (@ge-fnm/data-model)
 
+## I would like to use the library in my app
+To get started with the repository in your project install it like this
 ```
 yarn add @ge-fnm/data-model
 ```
 
-### yarn scripts
- - `yarn start`: Run `yarn run build` in watch mode
- - `yarn run test:watch`: Run test suite in [interactive watch mode](http://facebook.github.io/jest/docs/cli.html#watch)
- - `yarn run test:prod`: Run linting and generate coverage
- - `yarn run build`: Generate bundles and typings, create docs
- - `yarn run lint`: Lints code
- - `yarn run commit`: Commit using conventional commit style ([husky](https://github.com/typicode/husky) will tell you to use it if you haven't :wink:)
+Here is an example node application using the data-model
+```js
+const GE = require("@ge-fnm/data-model")
+
+const Action = GE.Action
+const Set = GE.Set
+const Map = GE.Map
+const Leaf = GE.Leaf
+const DataType = GE.DataType
+
+const child = new Leaf("world")
+const tree = new Map({"hello": child})
+
+console.log(tree)
+```
+
+### Documentation
+Documentation can be found here - https://ge-mds-fnm-v2.github.io/data-model/
+
+## I want to work on this project
+Please see [CONTRIBUTING.md](CONTRIBUTING.md)
+
 
 ### Excluding peerDependencies
 

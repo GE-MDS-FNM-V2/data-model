@@ -4,7 +4,6 @@ import { Leaf } from './classes/Leaf'
 import { List } from './classes/List'
 import { Map } from './classes/Map'
 import { Set } from './classes/Set'
-
 export default {
   Action,
   DataType,
