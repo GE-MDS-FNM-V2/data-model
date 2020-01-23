@@ -1,6 +1,6 @@
 # GE-FNM Data Model (@ge-fnm/data-model)
 
-## Getting Started
+## I would like to use the library in my app
 To get started with the repository in your project install it like this
 ```
 yarn add @ge-fnm/data-model
@@ -22,7 +22,7 @@ const tree = new Map({"hello": child})
 console.log(tree)
 ```
 
-## Documentation
+### Documentation
 Documentation can be found here - https://ge-mds-fnm-v2.github.io/data-model/
 
 ## I want to work on this project

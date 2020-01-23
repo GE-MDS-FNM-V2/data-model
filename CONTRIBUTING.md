@@ -49,6 +49,10 @@ https://github.com/semantic-release/semantic-release/blob/master/docs/usage/conf
 https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#options
 - TODO - allow for multiple feature branches at once
 
+## Merging changes into master
+Its as simple as merging your feature branch into master. It will automatically be pushed to npm as latest.
+
+
 ## I want to do something else
 ### yarn scripts
  - `yarn start`: Run `yarn run build` in watch mode
