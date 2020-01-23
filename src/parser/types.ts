@@ -8,5 +8,5 @@ export enum DATA_MODEL_TYPES {
 export interface Parser {
   name: string
   accepts: DATA_MODEL_TYPES[]
-  parse: (data: string) => DataType
+  parse: (data: string) => DataType | null
 }

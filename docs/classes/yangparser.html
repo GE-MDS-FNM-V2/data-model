@@ -945,6 +945,9 @@ img { max-width: 100%; }
 				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="yangparser.html#parse" class="tsd-kind-icon">parse</a>
 				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a href="yangparser.html#parseleaf" class="tsd-kind-icon">parse<wbr>Leaf</a>
+				</li>
 			</ul>
 		</li>
 		<li class=" tsd-kind-interface">
@@ -965,11 +968,20 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-type-alias">
 			<a href="../globals.html#mapfunction" class="tsd-kind-icon">Map<wbr>Function</a>
 		</li>
+		<li class=" tsd-kind-type-alias">
+			<a href="../globals.html#rawyangleaf" class="tsd-kind-icon">Raw<wbr>Yang<wbr>Leaf</a>
+		</li>
 		<li class=" tsd-kind-variable">
 			<a href="../globals.html#child_already_exists" class="tsd-kind-icon">CHILD_<wbr>ALREADY_<wbr>EXISTS</a>
 		</li>
 		<li class=" tsd-kind-variable">
 			<a href="../globals.html#exceeds_max_children" class="tsd-kind-icon">EXCEEDS_<wbr>MAX_<wbr>CHILDREN</a>
+		</li>
+		<li class=" tsd-kind-variable tsd-is-not-exported">
+			<a href="../globals.html#kind_key" class="tsd-kind-icon">KIND_<wbr>KEY</a>
+		</li>
+		<li class=" tsd-kind-variable">
+			<a href="../globals.html#leafexample" class="tsd-kind-icon">leaf<wbr>Example</a>
 		</li>
 		<li class=" tsd-kind-object-literal">
 			<a href="../globals.html#default_permissions" class="tsd-kind-icon">DEFAULT_<wbr>PERMISSIONS</a>
@@ -1010,6 +1022,7 @@ img { max-width: 100%; }
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="yangparser.html#parse" class="tsd-kind-icon">parse</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="yangparser.html#parseleaf" class="tsd-kind-icon">parse<wbr>Leaf</a></li>
 						</ul>
 					</section>
 				</div>
@@ -1024,7 +1037,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Implementation of <a href="../interfaces/parser.html">Parser</a>.<a href="../interfaces/parser.html#accepts">accepts</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/3c9eb00/src/parser/Yang.ts#L7">parser/Yang.ts:7</a></li>
+						<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/8133c96/src/parser/Yang/index.ts#L11">parser/Yang/index.ts:11</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1035,7 +1048,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Implementation of <a href="../interfaces/parser.html">Parser</a>.<a href="../interfaces/parser.html#name">name</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/3c9eb00/src/parser/Yang.ts#L6">parser/Yang.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/8133c96/src/parser/Yang/index.ts#L10">parser/Yang/index.ts:10</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1046,13 +1059,13 @@ img { max-width: 100%; }
 				<a name="parse" class="tsd-anchor"></a>
 				<h3>parse</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">parse<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="datatype.html" class="tsd-signature-type">DataType</a></li>
+					<li class="tsd-signature tsd-kind-icon">parse<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="datatype.html" class="tsd-signature-type">DataType</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/3c9eb00/src/parser/Yang.ts#L8">parser/Yang.ts:8</a></li>
+								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/8133c96/src/parser/Yang/index.ts#L12">parser/Yang/index.ts:12</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1061,7 +1074,36 @@ img { max-width: 100%; }
 								<h5>data: <span class="tsd-signature-type">string</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="datatype.html" class="tsd-signature-type">DataType</a></h4>
+						<h4 class="tsd-returns-title">Returns <a href="datatype.html" class="tsd-signature-type">DataType</a>
+							<span class="tsd-signature-symbol"> | </span>
+							<span class="tsd-signature-type">null</span>
+						</h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+				<a name="parseleaf" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> parse<wbr>Leaf</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<li class="tsd-signature tsd-kind-icon">parse<wbr>Leaf<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="../globals.html#rawyangleaf" class="tsd-signature-type">RawYangLeaf</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="datatype.html" class="tsd-signature-type">DataType</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/8133c96/src/parser/Yang/index.ts#L27">parser/Yang/index.ts:27</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>data: <a href="../globals.html#rawyangleaf" class="tsd-signature-type">RawYangLeaf</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="datatype.html" class="tsd-signature-type">DataType</a>
+							<span class="tsd-signature-symbol"> | </span>
+							<span class="tsd-signature-type">null</span>
+						</h4>
 					</li>
 				</ul>
 			</section>
