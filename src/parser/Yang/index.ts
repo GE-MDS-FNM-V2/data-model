@@ -12,12 +12,12 @@ export class YangParser implements Parser {
   public parse(data: string): DataType | null {
     const json = JSON.parse(data)
 
-    if (data == '{}') {
+    if (data === '{}') {
       return null
     }
 
     const currentKind = json[KIND_KEY]
-    if (currentKind == 'leaf') {
+    if (currentKind === 'leaf') {
       return this.parseLeaf(json)
     } else {
       throw Error(
