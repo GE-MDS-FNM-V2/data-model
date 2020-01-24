@@ -70,6 +70,10 @@
       "tsx",
       "js"
     ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/"
+    ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/test/"
