@@ -257,7 +257,131 @@ export const listWithKeyExample = JSON.stringify({
   ]
 })
 
-export const containerExample = JSON.stringify({
+export const emptyContainerExample = JSON.stringify({
+  kind: 'container',
+  name: 'prefix-delegation',
+  qname: 'mdsif:prefix-delegation',
+  presence: true,
+  access: {
+    create: true,
+    read: true,
+    update: true,
+    delete: true,
+    execute: false
+  }
+})
+
+export const containerSimpleExample = JSON.stringify({
+  kind: 'container',
+  name: 'prefix-delegation',
+  qname: 'mdsif:prefix-delegation',
+  presence: true,
+  access: {
+    create: true,
+    read: true,
+    update: true,
+    delete: true,
+    execute: false
+  },
+  children: [
+    {
+      kind: 'leaf',
+      name: 'request-prefix-exclude',
+      qname: 'mdsif:request-prefix-exclude',
+      info: {
+        string: 'Request prefix-exclude option.'
+      },
+      access: {
+        create: true,
+        read: true,
+        update: true,
+        delete: true,
+        execute: false
+      },
+      type: { name: 'boolean', primitive: true },
+      default: true
+    }
+  ]
+})
+
+export const containerMixedExample = JSON.stringify({
+  kind: 'container',
+  name: 'prefix-delegation',
+  qname: 'mdsif:prefix-delegation',
+  presence: true,
+  access: {
+    create: true,
+    read: true,
+    update: true,
+    delete: true,
+    execute: false
+  },
+  children: [
+    {
+      kind: 'leaf',
+      name: 'request-prefix-exclude',
+      qname: 'mdsif:request-prefix-exclude',
+      info: {
+        string: 'Request prefix-exclude option.'
+      },
+      access: {
+        create: true,
+        read: true,
+        update: true,
+        delete: true,
+        execute: false
+      },
+      type: { name: 'boolean', primitive: true },
+      default: true
+    },
+    {
+      kind: 'list',
+      name: 'interface',
+      qname: 'mdsif:interface',
+      info: {
+        string: 'The interface to which the prefix is delegated.'
+      },
+      mandatory: true,
+      min_elements: 1,
+      max_elements: 'unbounded',
+      key: ['name'],
+      access: {
+        create: true,
+        read: true,
+        update: true,
+        delete: true,
+        execute: false
+      },
+      leafrefGroups: [['name']],
+      leafref_groups: [['name']],
+      children: [
+        {
+          kind: 'leaf',
+          name: 'sub-prefix',
+          qname: 'mdsif:sub-prefix',
+          info: {
+            string:
+              'This sub-prefix is combined with the prefix received to\ncreate the delegated prefix for the interface.'
+          },
+          mandatory: true,
+          access: {
+            create: true,
+            read: true,
+            update: true,
+            delete: true,
+            execute: false
+          },
+          type: {
+            name: 'ipv6-address',
+            primitive: true
+          }
+        }
+      ]
+    }
+  ]
+})
+
+export const fullExample = JSON.stringify({
   kind: 'container',
   name: 'prefix-delegation',
   qname: 'mdsif:prefix-delegation',

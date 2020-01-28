@@ -20,6 +20,16 @@ describe('Map', () => {
     expect(true).toEqual(true)
   })
 
+  it('Creates empty map with {} as children', () => {
+    const type = new Map()
+    expect(type.children).toEqual({})
+  })
+
+  it('Creates empty map initialized with {} with {} as children', () => {
+    const type = new Map({})
+    expect(type.children).toEqual({})
+  })
+
   it('Can create with key value pair', () => {
     const child = new Leaf('child1value')
     const type = new Map({

@@ -13,12 +13,12 @@ describe('Yang Parser - General', () => {
     }
   })
 
-  it('Doesnt fail on valid yang', () => {
-    try {
-      parser.parse(containerExample)
-      expect(true).toEqual(true)
-    } catch (error) {
-      expect(error).toEqual(false)
-    }
-  })
+  //   it('Doesnt fail on valid yang', () => {
+  //     try {
+  //       parser.parse(containerExample)
+  //       expect(true).toEqual(true)
+  //     } catch (error) {
+  //       expect(error).toEqual(false)
+  //     }
+  //   })
 })

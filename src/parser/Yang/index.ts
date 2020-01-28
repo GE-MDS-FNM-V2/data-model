@@ -36,7 +36,6 @@ export class YangParser implements Parser {
 
   private parseList(data: RawYangList): DataType {
     const children = data.children.map(child => {
-      console.log(child)
       return this.parseJSON(child)
     })
     const maxChildren =
@@ -45,7 +44,11 @@ export class YangParser implements Parser {
   }
 
   private parseContainer(data: RawYangContainer): DataType {
-    const children = data.children.map(child => {
+    let children = data.children
+    if (!children) {
+      children = []
+    }
+    children = children.map(child => {
       return this.parseJSON(child)
     })
     const childrenList = new List(children, Infinity, data.access)
