@@ -1,7 +1,7 @@
 import { Parser, DATA_MODEL_TYPES } from '../types'
 import { DataType } from '../../classes/DataType'
 import { Map } from '../../classes/Map'
-import { RawYangLeaf, RawYangList } from './yangTypes'
+import { RawYangLeaf, RawYangList, RawYangContainer } from './yangTypes'
 import { Leaf } from '../../classes/Leaf'
 import { List } from '../../classes/List'
 
@@ -16,6 +16,8 @@ export class YangParser implements Parser {
       return this.parseLeaf(json)
     } else if (currentKind === 'list') {
       return this.parseList(json)
+    } else if (currentKind === 'container') {
+      return this.parseContainer(json)
     } else {
       throw Error(
         `Could not parse: ${JSON.stringify(json)} \nYANG kind "${currentKind}" is not supported`
@@ -38,7 +40,17 @@ export class YangParser implements Parser {
       return this.parseJSON(child)
     })
     const maxChildren =
-      data.max_elements == 'unbounded' ? Infinity : Number.parseInt(data.max_elements)
+      data.max_elements === 'unbounded' ? Infinity : Number.parseInt(data.max_elements, 10)
     return new List(children, maxChildren, data.access)
+  }
+
+  private parseContainer(data: RawYangContainer): DataType {
+    const children = data.children.map(child => {
+      return this.parseJSON(child)
+    })
+    const childrenList = new List(children, Infinity, data.access)
+    const newContainer = new Map({ [data.name]: childrenList }, Infinity, data.access)
+
+    return newContainer
   }
 }

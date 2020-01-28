@@ -27,5 +27,20 @@ export type RawYangList = {
     namespace: string
     name: string
   }
-  children: []
+  children: any[]
+}
+
+export type RawYangContainer = {
+  kind: 'container'
+  name: string
+  qname: string
+  info: { string: string }
+  namespace: string
+  presence: boolean
+  access: PERMISSIONS
+  when_targets: string[]
+  leafrefGroups: [string][]
+  leafref_groups: [string][]
+  children: any[]
+  deps: string[]
 }
