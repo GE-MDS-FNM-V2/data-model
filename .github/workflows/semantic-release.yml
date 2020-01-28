@@ -14,10 +14,12 @@ jobs:
       run: yarn test:prod
     - name: Build
       run: yarn build
-    - name: asdf
-      run: ls -al && cd dist && ls -al && cd ..
-    - name: Release
+    - name: Release to NPM
       uses: cycjimmy/semantic-release-action@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
