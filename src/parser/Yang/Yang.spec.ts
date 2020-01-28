@@ -1,5 +1,4 @@
 import { YangParser } from './index'
-import { containerExample } from '../exampleResult'
 
 describe('Yang Parser - General', () => {
   const parser = new YangParser()
