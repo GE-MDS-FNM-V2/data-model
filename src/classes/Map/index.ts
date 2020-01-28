@@ -1,6 +1,6 @@
 import { DataType } from '../DataType'
 import { EXCEEDS_MAX_CHILDREN } from '../../types/errors'
-import { DEFAULT_PERMISSIONS, PERMISSIONS } from '../../types/permissions'
+import { PERMISSIONS } from '../../types/permissions'
 
 export interface KeyDataTypePair {
   [key: string]: DataType
@@ -14,7 +14,7 @@ export class Map extends DataType {
   constructor(
     children: KeyDataTypePair = {},
     maxChildren: number = Infinity,
-    permissions: PERMISSIONS = DEFAULT_PERMISSIONS
+    permissions?: PERMISSIONS
   ) {
     super(permissions)
     this.children = children

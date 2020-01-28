@@ -87,7 +87,7 @@
       }
     },
     "collectCoverageFrom": [
-      "src/classes/*/*.{js,ts}"
+      "src/(classes|parser)/*/*.{js,ts}"
     ]
   },
   "prettier": {

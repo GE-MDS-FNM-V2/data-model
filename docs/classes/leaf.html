@@ -927,14 +927,14 @@ img { max-width: 100%; }
 				<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
 					<a href="leaf.html#constructor" class="tsd-kind-icon">constructor</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-					<a href="leaf.html#permissions" class="tsd-kind-icon">permissions</a>
-				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class">
 					<a href="leaf.html#value" class="tsd-kind-icon">value</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a href="leaf.html#delete" class="tsd-kind-icon">delete</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a href="leaf.html#getpermissions" class="tsd-kind-icon">get<wbr>Permissions</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="leaf.html#getvalue" class="tsd-kind-icon">get<wbr>Value</a>
@@ -977,6 +977,9 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-type-alias">
 			<a href="../globals.html#rawyangleaf" class="tsd-kind-icon">Raw<wbr>Yang<wbr>Leaf</a>
 		</li>
+		<li class=" tsd-kind-type-alias">
+			<a href="../globals.html#rawyanglist" class="tsd-kind-icon">Raw<wbr>Yang<wbr>List</a>
+		</li>
 		<li class=" tsd-kind-variable">
 			<a href="../globals.html#child_already_exists" class="tsd-kind-icon">CHILD_<wbr>ALREADY_<wbr>EXISTS</a>
 		</li>
@@ -987,7 +990,28 @@ img { max-width: 100%; }
 			<a href="../globals.html#kind_key" class="tsd-kind-icon">KIND_<wbr>KEY</a>
 		</li>
 		<li class=" tsd-kind-variable">
+			<a href="../globals.html#boundedlistexample" class="tsd-kind-icon">bounded<wbr>List<wbr>Example</a>
+		</li>
+		<li class=" tsd-kind-variable">
+			<a href="../globals.html#containerexample" class="tsd-kind-icon">container<wbr>Example</a>
+		</li>
+		<li class=" tsd-kind-variable">
+			<a href="../globals.html#emptylistexample" class="tsd-kind-icon">empty<wbr>List<wbr>Example</a>
+		</li>
+		<li class=" tsd-kind-variable">
 			<a href="../globals.html#leafexample" class="tsd-kind-icon">leaf<wbr>Example</a>
+		</li>
+		<li class=" tsd-kind-variable">
+			<a href="../globals.html#leafexample1" class="tsd-kind-icon">leaf<wbr>Example1</a>
+		</li>
+		<li class=" tsd-kind-variable">
+			<a href="../globals.html#listexample" class="tsd-kind-icon">list<wbr>Example</a>
+		</li>
+		<li class=" tsd-kind-variable">
+			<a href="../globals.html#listwithkeyexample" class="tsd-kind-icon">list<wbr>With<wbr>Key<wbr>Example</a>
+		</li>
+		<li class=" tsd-kind-variable">
+			<a href="../globals.html#unboundedlistexample" class="tsd-kind-icon">unbounded<wbr>List<wbr>Example</a>
 		</li>
 		<li class=" tsd-kind-object-literal">
 			<a href="../globals.html#default_permissions" class="tsd-kind-icon">DEFAULT_<wbr>PERMISSIONS</a>
@@ -1025,7 +1049,6 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="leaf.html#permissions" class="tsd-kind-icon">permissions</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="leaf.html#value" class="tsd-kind-icon">value</a></li>
 						</ul>
 					</section>
@@ -1033,6 +1056,7 @@ img { max-width: 100%; }
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="leaf.html#delete" class="tsd-kind-icon">delete</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="leaf.html#getpermissions" class="tsd-kind-icon">get<wbr>Permissions</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="leaf.html#getvalue" class="tsd-kind-icon">get<wbr>Value</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="leaf.html#update" class="tsd-kind-icon">update</a></li>
 						</ul>
@@ -1053,7 +1077,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Overrides <a href="datatype.html">DataType</a>.<a href="datatype.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/Leaf/index.ts#L7">classes/Leaf/index.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/Leaf/index.ts#L7">classes/Leaf/index.ts:7</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1062,7 +1086,7 @@ img { max-width: 100%; }
 								<h5>value: <a href="../globals.html#leaftype" class="tsd-signature-type">LeafType</a></h5>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> permissions: <a href="../interfaces/permissions.html" class="tsd-signature-type">PERMISSIONS</a><span class="tsd-signature-symbol"> =&nbsp;DEFAULT_PERMISSIONS</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> permissions: <a href="../interfaces/permissions.html" class="tsd-signature-type">PERMISSIONS</a></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="leaf.html" class="tsd-signature-type">Leaf</a></h4>
@@ -1072,24 +1096,13 @@ img { max-width: 100%; }
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-				<a name="permissions" class="tsd-anchor"></a>
-				<h3>permissions</h3>
-				<div class="tsd-signature tsd-kind-icon">permissions<span class="tsd-signature-symbol">:</span> <a href="../interfaces/permissions.html" class="tsd-signature-type">PERMISSIONS</a></div>
-				<aside class="tsd-sources">
-					<p>Inherited from <a href="datatype.html">DataType</a>.<a href="datatype.html#permissions">permissions</a></p>
-					<ul>
-						<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/DataType/index.ts#L4">classes/DataType/index.ts:4</a></li>
-					</ul>
-				</aside>
-			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 				<a name="value" class="tsd-anchor"></a>
 				<h3>value</h3>
 				<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <a href="../globals.html#leaftype" class="tsd-signature-type">LeafType</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/Leaf/index.ts#L7">classes/Leaf/index.ts:7</a></li>
+						<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/Leaf/index.ts#L7">classes/Leaf/index.ts:7</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1107,10 +1120,28 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="datatype.html">DataType</a>.<a href="datatype.html#delete">delete</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/DataType/index.ts#L14">classes/DataType/index.ts:14</a></li>
+								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/DataType/index.ts#L18">classes/DataType/index.ts:18</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+				<a name="getpermissions" class="tsd-anchor"></a>
+				<h3>get<wbr>Permissions</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Permissions<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/permissions.html" class="tsd-signature-type">PERMISSIONS</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<p>Inherited from <a href="datatype.html">DataType</a>.<a href="datatype.html#getpermissions">getPermissions</a></p>
+							<ul>
+								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/DataType/index.ts#L10">classes/DataType/index.ts:10</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <a href="../interfaces/permissions.html" class="tsd-signature-type">PERMISSIONS</a></h4>
 					</li>
 				</ul>
 			</section>
@@ -1124,7 +1155,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/Leaf/index.ts#L13">classes/Leaf/index.ts:13</a></li>
+								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/Leaf/index.ts#L13">classes/Leaf/index.ts:13</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span>
@@ -1153,7 +1184,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="datatype.html">DataType</a>.<a href="datatype.html#update">update</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/DataType/index.ts#L10">classes/DataType/index.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/DataType/index.ts#L14">classes/DataType/index.ts:14</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>

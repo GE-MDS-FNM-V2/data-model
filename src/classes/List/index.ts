@@ -38,7 +38,7 @@ export class List extends DataType implements EnumerableDataType {
     for (let index = 0; index < this.children.length; index++) {
       resultArray.push(mapFunc(this.children[index], index, this.children))
     }
-    return new List(resultArray, this.maxChildren, this.permissions)
+    return new List(resultArray, this.maxChildren, this.getPermissions())
   }
 
   filter(filterFunc: (value: DataType, index: number, array: DataType[]) => boolean) {
@@ -48,7 +48,7 @@ export class List extends DataType implements EnumerableDataType {
         resultArray.push(this.children[index])
       }
     }
-    return new List(resultArray, this.maxChildren, this.permissions)
+    return new List(resultArray, this.maxChildren, this.getPermissions())
   }
 
   contains(item: DataType) {

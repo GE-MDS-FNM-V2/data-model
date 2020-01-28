@@ -11,7 +11,7 @@ describe('DataModel', () => {
   const type = new DataType(testPermissions)
 
   it('Create a new object with permissions', () => {
-    expect(type.permissions).toEqual(testPermissions)
+    expect(type.getPermissions()).toEqual(testPermissions)
   })
 
   it('Runs update', () => {

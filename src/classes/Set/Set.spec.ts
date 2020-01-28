@@ -43,6 +43,6 @@ describe('Set', () => {
     const child = new Leaf('child1value')
 
     const type = new Set([child], 10, testPermissions)
-    expect(type.permissions).toEqual(testPermissions)
+    expect(type.getPermissions()).toEqual(testPermissions)
   })
 })

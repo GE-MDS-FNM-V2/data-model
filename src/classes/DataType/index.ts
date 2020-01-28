@@ -1,10 +1,14 @@
-import { PERMISSIONS } from '../../types/permissions'
+import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
 
 export class DataType {
-  permissions: PERMISSIONS
+  private permissions: PERMISSIONS
 
-  constructor(permissions: PERMISSIONS) {
+  constructor(permissions: PERMISSIONS = DEFAULT_PERMISSIONS) {
     this.permissions = permissions
+  }
+
+  getPermissions() {
+    return this.permissions
   }
 
   update() {

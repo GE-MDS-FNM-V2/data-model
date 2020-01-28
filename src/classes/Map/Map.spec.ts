@@ -11,7 +11,7 @@ const testPermissions = {
 describe('Map', () => {
   it('Sets the right permissions', () => {
     const type = new Map({}, Infinity, testPermissions)
-    expect(type.permissions).toEqual(testPermissions)
+    expect(type.getPermissions()).toEqual(testPermissions)
   })
 
   it('Can create empty map', () => {

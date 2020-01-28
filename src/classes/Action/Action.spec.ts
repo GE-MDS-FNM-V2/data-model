@@ -14,7 +14,7 @@ describe('Action', () => {
 
   it('Create a DataType with permissions', () => {
     const type = new Action(action, testPermissions)
-    expect(type.permissions).toEqual(testPermissions)
+    expect(type.getPermissions()).toEqual(testPermissions)
   })
 
   it('Will run the function', () => {

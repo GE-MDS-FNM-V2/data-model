@@ -945,9 +945,6 @@ img { max-width: 100%; }
 				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a href="set.html#maxchildren" class="tsd-kind-icon">max<wbr>Children</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-					<a href="set.html#permissions" class="tsd-kind-icon">permissions</a>
-				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
 					<a href="set.html#add" class="tsd-kind-icon">add</a>
 				</li>
@@ -959,6 +956,9 @@ img { max-width: 100%; }
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a href="set.html#filter" class="tsd-kind-icon">filter</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a href="set.html#getpermissions" class="tsd-kind-icon">get<wbr>Permissions</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a href="set.html#map" class="tsd-kind-icon">map</a>
@@ -992,6 +992,9 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-type-alias">
 			<a href="../globals.html#rawyangleaf" class="tsd-kind-icon">Raw<wbr>Yang<wbr>Leaf</a>
 		</li>
+		<li class=" tsd-kind-type-alias">
+			<a href="../globals.html#rawyanglist" class="tsd-kind-icon">Raw<wbr>Yang<wbr>List</a>
+		</li>
 		<li class=" tsd-kind-variable">
 			<a href="../globals.html#child_already_exists" class="tsd-kind-icon">CHILD_<wbr>ALREADY_<wbr>EXISTS</a>
 		</li>
@@ -1002,7 +1005,28 @@ img { max-width: 100%; }
 			<a href="../globals.html#kind_key" class="tsd-kind-icon">KIND_<wbr>KEY</a>
 		</li>
 		<li class=" tsd-kind-variable">
+			<a href="../globals.html#boundedlistexample" class="tsd-kind-icon">bounded<wbr>List<wbr>Example</a>
+		</li>
+		<li class=" tsd-kind-variable">
+			<a href="../globals.html#containerexample" class="tsd-kind-icon">container<wbr>Example</a>
+		</li>
+		<li class=" tsd-kind-variable">
+			<a href="../globals.html#emptylistexample" class="tsd-kind-icon">empty<wbr>List<wbr>Example</a>
+		</li>
+		<li class=" tsd-kind-variable">
 			<a href="../globals.html#leafexample" class="tsd-kind-icon">leaf<wbr>Example</a>
+		</li>
+		<li class=" tsd-kind-variable">
+			<a href="../globals.html#leafexample1" class="tsd-kind-icon">leaf<wbr>Example1</a>
+		</li>
+		<li class=" tsd-kind-variable">
+			<a href="../globals.html#listexample" class="tsd-kind-icon">list<wbr>Example</a>
+		</li>
+		<li class=" tsd-kind-variable">
+			<a href="../globals.html#listwithkeyexample" class="tsd-kind-icon">list<wbr>With<wbr>Key<wbr>Example</a>
+		</li>
+		<li class=" tsd-kind-variable">
+			<a href="../globals.html#unboundedlistexample" class="tsd-kind-icon">unbounded<wbr>List<wbr>Example</a>
 		</li>
 		<li class=" tsd-kind-object-literal">
 			<a href="../globals.html#default_permissions" class="tsd-kind-icon">DEFAULT_<wbr>PERMISSIONS</a>
@@ -1049,7 +1073,6 @@ img { max-width: 100%; }
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="set.html#children" class="tsd-kind-icon">children</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="set.html#length" class="tsd-kind-icon">length</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="set.html#maxchildren" class="tsd-kind-icon">max<wbr>Children</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="set.html#permissions" class="tsd-kind-icon">permissions</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section ">
@@ -1059,6 +1082,7 @@ img { max-width: 100%; }
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="set.html#contains" class="tsd-kind-icon">contains</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="set.html#delete" class="tsd-kind-icon">delete</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="set.html#filter" class="tsd-kind-icon">filter</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="set.html#getpermissions" class="tsd-kind-icon">get<wbr>Permissions</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="set.html#map" class="tsd-kind-icon">map</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="set.html#update" class="tsd-kind-icon">update</a></li>
 						</ul>
@@ -1079,7 +1103,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Overrides <a href="list.html">List</a>.<a href="list.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/Set/index.ts#L6">classes/Set/index.ts:6</a></li>
+								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/Set/index.ts#L6">classes/Set/index.ts:6</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1109,7 +1133,7 @@ img { max-width: 100%; }
 					<p>Implementation of <a href="../interfaces/enumerabledatatype.html">EnumerableDataType</a>.<a href="../interfaces/enumerabledatatype.html#children">children</a></p>
 					<p>Inherited from <a href="list.html">List</a>.<a href="list.html#children">children</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/List/index.ts#L8">classes/List/index.ts:8</a></li>
+						<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/List/index.ts#L8">classes/List/index.ts:8</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1121,7 +1145,7 @@ img { max-width: 100%; }
 					<p>Implementation of <a href="../interfaces/enumerabledatatype.html">EnumerableDataType</a>.<a href="../interfaces/enumerabledatatype.html#length">length</a></p>
 					<p>Inherited from <a href="list.html">List</a>.<a href="list.html#length">length</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/List/index.ts#L10">classes/List/index.ts:10</a></li>
+						<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/List/index.ts#L10">classes/List/index.ts:10</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1133,18 +1157,7 @@ img { max-width: 100%; }
 					<p>Implementation of <a href="../interfaces/enumerabledatatype.html">EnumerableDataType</a>.<a href="../interfaces/enumerabledatatype.html#maxchildren">maxChildren</a></p>
 					<p>Inherited from <a href="list.html">List</a>.<a href="list.html#maxchildren">maxChildren</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/List/index.ts#L9">classes/List/index.ts:9</a></li>
-					</ul>
-				</aside>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-				<a name="permissions" class="tsd-anchor"></a>
-				<h3>permissions</h3>
-				<div class="tsd-signature tsd-kind-icon">permissions<span class="tsd-signature-symbol">:</span> <a href="../interfaces/permissions.html" class="tsd-signature-type">PERMISSIONS</a></div>
-				<aside class="tsd-sources">
-					<p>Inherited from <a href="datatype.html">DataType</a>.<a href="datatype.html#permissions">permissions</a></p>
-					<ul>
-						<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/DataType/index.ts#L4">classes/DataType/index.ts:4</a></li>
+						<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/List/index.ts#L9">classes/List/index.ts:9</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1163,7 +1176,7 @@ img { max-width: 100%; }
 							<p>Implementation of <a href="../interfaces/enumerabledatatype.html">EnumerableDataType</a>.<a href="../interfaces/enumerabledatatype.html#add">add</a></p>
 							<p>Overrides <a href="list.html">List</a>.<a href="list.html#add">add</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/Set/index.ts#L15">classes/Set/index.ts:15</a></li>
+								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/Set/index.ts#L15">classes/Set/index.ts:15</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1188,7 +1201,7 @@ img { max-width: 100%; }
 							<p>Implementation of <a href="../interfaces/enumerabledatatype.html">EnumerableDataType</a>.<a href="../interfaces/enumerabledatatype.html#contains">contains</a></p>
 							<p>Inherited from <a href="list.html">List</a>.<a href="list.html#contains">contains</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/List/index.ts#L54">classes/List/index.ts:54</a></li>
+								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/List/index.ts#L54">classes/List/index.ts:54</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1212,7 +1225,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="datatype.html">DataType</a>.<a href="datatype.html#delete">delete</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/DataType/index.ts#L14">classes/DataType/index.ts:14</a></li>
+								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/DataType/index.ts#L18">classes/DataType/index.ts:18</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -1230,7 +1243,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="list.html">List</a>.<a href="list.html#filter">filter</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/List/index.ts#L44">classes/List/index.ts:44</a></li>
+								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/List/index.ts#L44">classes/List/index.ts:44</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1268,6 +1281,24 @@ img { max-width: 100%; }
 				</ul>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+				<a name="getpermissions" class="tsd-anchor"></a>
+				<h3>get<wbr>Permissions</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Permissions<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/permissions.html" class="tsd-signature-type">PERMISSIONS</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<p>Inherited from <a href="datatype.html">DataType</a>.<a href="datatype.html#getpermissions">getPermissions</a></p>
+							<ul>
+								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/DataType/index.ts#L10">classes/DataType/index.ts:10</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <a href="../interfaces/permissions.html" class="tsd-signature-type">PERMISSIONS</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 				<a name="map" class="tsd-anchor"></a>
 				<h3>map</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
@@ -1279,7 +1310,7 @@ img { max-width: 100%; }
 							<p>Implementation of <a href="../interfaces/enumerabledatatype.html">EnumerableDataType</a>.<a href="../interfaces/enumerabledatatype.html#map">map</a></p>
 							<p>Inherited from <a href="list.html">List</a>.<a href="list.html#map">map</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/List/index.ts#L36">classes/List/index.ts:36</a></li>
+								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/List/index.ts#L36">classes/List/index.ts:36</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1303,7 +1334,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="datatype.html">DataType</a>.<a href="datatype.html#update">update</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/fa90f56/src/classes/DataType/index.ts#L10">classes/DataType/index.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/GE-MDS-FNM-V2/data-model/blob/2836810/src/classes/DataType/index.ts#L14">classes/DataType/index.ts:14</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>

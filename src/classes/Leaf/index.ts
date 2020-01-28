@@ -5,7 +5,7 @@ type LeafType = number | string | boolean | null | any[]
 
 export class Leaf extends DataType {
   value: LeafType
-  constructor(value: LeafType, permissions: PERMISSIONS = DEFAULT_PERMISSIONS) {
+  constructor(value: LeafType, permissions?: PERMISSIONS) {
     super(permissions)
     this.value = value
   }
