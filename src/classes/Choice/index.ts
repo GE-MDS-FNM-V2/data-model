@@ -13,7 +13,7 @@ export class Choice extends Map {
   ) {
     super(children, maxChildren, permissions)
 
-    if (Object.keys(children).length == 0) {
+    if (Object.keys(children).length === 0) {
       throw MIN_CHILDREN_NOT_MET
     }
     let nonNullDefaultKey = defaultOption

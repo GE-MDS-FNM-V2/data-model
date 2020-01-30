@@ -13,7 +13,7 @@ describe('Choice', () => {
   }
 
   it('Create a Choice without erroring', () => {
-    new Choice({
+    const type = new Choice({
       hello: new Leaf('world'),
       asdf: new Leaf('1234')
     })
@@ -78,7 +78,7 @@ describe('Choice', () => {
 
   it('Throws error if initialized without any choices', () => {
     try {
-      new Choice({})
+      const type = new Choice({})
       expect(false).toEqual(true)
     } catch (error) {
       expect(error).toEqual(MIN_CHILDREN_NOT_MET)
