@@ -1,5 +1,6 @@
 import { List } from './index'
 import { Leaf } from '../Leaf'
+import { EXCEEDS_MAX_CHILDREN } from '../../types/errors'
 
 describe('List', () => {
   it('Create an List without any children', () => {
@@ -27,7 +28,7 @@ describe('List', () => {
     expect(type.children).toEqual([child1])
   })
 
-  it('Throws error if it exceeds max', () => {
+  it('Throws error if it exceeds max when adding item', () => {
     const child1 = new Leaf('child1value')
     const type = new List([], 0)
     try {
@@ -35,6 +36,18 @@ describe('List', () => {
       expect(false).toEqual(true)
     } catch (error) {
       expect(type.children).toEqual([])
+    }
+  })
+
+  it('Throws error if it exceeds max when initializing', () => {
+    const child1 = new Leaf('child1value')
+    const child2 = new Leaf('child2value')
+    const child3 = new Leaf('child3value')
+    try {
+      const type = new List([child1, child2, child3], 0)
+      expect(false).toEqual(true)
+    } catch (error) {
+      expect(error).toEqual(EXCEEDS_MAX_CHILDREN)
     }
   })
 
