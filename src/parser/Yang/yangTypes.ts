@@ -1,4 +1,5 @@
 import { PERMISSIONS } from '../../types/permissions'
+import { DataType } from '../../classes/DataType'
 
 export type RawYangLeaf = {
   kind: 'leaf'
@@ -60,4 +61,16 @@ export type RawYangCase = {
   qname: string
   is_action_input: boolean
   children: any[] | ''
+}
+
+export type RawYangAction = {
+  kind: 'action'
+  name: string
+  qname: string
+  info: {
+    string: string
+  }
+  mandatory: boolean
+  access: PERMISSIONS
+  children: any[]
 }

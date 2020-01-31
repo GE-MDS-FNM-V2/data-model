@@ -9,6 +9,7 @@ export class Set extends List {
     maxChildren: number = Infinity,
     permissions: PERMISSIONS = DEFAULT_PERMISSIONS
   ) {
+    /* istanbul ignore next */
     super(children, maxChildren, permissions)
   }
 

@@ -10,6 +10,12 @@ describe('Set', () => {
     execute: true
   }
 
+  it('Children are correctly set', () => {
+    const child = new Leaf('child1value')
+    const type = new Set([child])
+    expect(type.children).toEqual([child])
+  })
+
   it('Throws error if child already exists', () => {
     const child = new Leaf('child1value')
     const type = new Set([child])

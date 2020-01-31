@@ -1,11 +1,19 @@
 import { Parser, DATA_MODEL_TYPES } from '../types'
 import { DataType } from '../../classes/DataType'
 import { Map, KeyDataTypePair } from '../../classes/Map'
-import { RawYangLeaf, RawYangList, RawYangContainer, RawYangCase, RawYangChoice } from './yangTypes'
+import {
+  RawYangLeaf,
+  RawYangList,
+  RawYangContainer,
+  RawYangCase,
+  RawYangChoice,
+  RawYangAction
+} from './yangTypes'
 import { Leaf } from '../../classes/Leaf'
 import { List } from '../../classes/List'
 import { MIN_CHILDREN_NOT_MET } from '../../types/errors'
 import { Choice } from '../../classes/Choice'
+import { Action } from '../../classes/Action'
 
 const KIND_KEY = 'kind'
 export class YangParser implements Parser {
@@ -22,6 +30,8 @@ export class YangParser implements Parser {
       return this.parseContainer(json)
     } else if (currentKind === 'choice') {
       return this.parseChoice(json)
+    } else if (currentKind === 'action') {
+      return this.parseAction(json)
     } else {
       throw Error(
         `Could not parse: ${JSON.stringify(json)} \nYANG kind "${currentKind}" is not supported`
@@ -76,5 +86,12 @@ export class YangParser implements Parser {
       }
     })
     return new Choice(childrenObj)
+  }
+
+  private parseAction(data: RawYangAction): DataType {
+    const children = data.children.map(child => {
+      return this.parseJSON(child)
+    })
+    return new Action(undefined, children, Infinity, data.access)
   }
 }

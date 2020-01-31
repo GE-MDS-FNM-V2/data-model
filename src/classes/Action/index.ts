@@ -1,19 +1,24 @@
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
+import { List } from '../List'
 import { DataType } from '../DataType'
 
-export class Action extends DataType {
-  readonly action: Function
+export class Action extends List {
+  readonly action: Function | undefined
   numberRuns: number
-  constructor(action: Function, permissions: PERMISSIONS = DEFAULT_PERMISSIONS) {
-    super(permissions)
+  constructor(
+    action?: Function,
+    children: DataType[] = [],
+    maxChildren: number = Infinity,
+    permissions: PERMISSIONS = DEFAULT_PERMISSIONS
+  ) {
+    super(children, maxChildren, permissions)
+
     this.action = action
     this.numberRuns = 0
   }
 
   run() {
-    // TODO - trigger ci comment - remove it eventually
-    // asdf
-    this.action()
+    this.action && this.action()
     this.numberRuns++
   }
 }

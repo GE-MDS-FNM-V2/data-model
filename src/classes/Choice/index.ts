@@ -11,6 +11,7 @@ export class Choice extends Map {
     maxChildren: number = Infinity,
     permissions?: PERMISSIONS
   ) {
+    /* istanbul ignore next */
     super(children, maxChildren, permissions)
 
     if (Object.keys(children).length === 0) {

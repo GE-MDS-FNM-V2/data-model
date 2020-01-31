@@ -1,4 +1,5 @@
 import { Action } from './index'
+import { Leaf } from '../Leaf'
 
 describe('Action', () => {
   const testPermissions = {
@@ -13,8 +14,14 @@ describe('Action', () => {
   const action = jest.fn()
 
   it('Create a DataType with permissions', () => {
-    const type = new Action(action, testPermissions)
+    const type = new Action(action, [], Infinity, testPermissions)
     expect(type.getPermissions()).toEqual(testPermissions)
+  })
+
+  it('Create a DataType with children', () => {
+    const children = [new Leaf('asdf'), new Leaf('1234')]
+    const type = new Action(action, children, Infinity, testPermissions)
+    expect(type.children).toEqual(children)
   })
 
   it('Will run the function', () => {

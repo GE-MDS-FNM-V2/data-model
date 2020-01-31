@@ -444,6 +444,62 @@ export const choiceWithCaseThatHasNoChildren = JSON.stringify({
   ]
 })
 
+export const actionNoChildren = JSON.stringify({
+  kind: 'action',
+  name: 'cancel-reprogram',
+  qname: 'mds_cell:cancel-reprogram',
+  info: {
+    string: 'Cancels a reprogramming task, if one is active'
+  },
+  mandatory: true,
+  access: {
+    create: false,
+    read: false,
+    update: false,
+    delete: false,
+    execute: true
+  },
+  children: []
+})
+
+export const actionWithChildren = JSON.stringify({
+  kind: 'action',
+  name: 'delete-image',
+  qname: 'mds_cell:delete-image',
+  info: { string: 'Deletes an image stored on the modem.' },
+  mandatory: true,
+  access: {
+    create: false,
+    read: false,
+    update: false,
+    delete: false,
+    execute: true
+  },
+  children: [
+    {
+      kind: 'leaf',
+      name: 'retry-interval',
+      qname: 'mdsif:retry-interval',
+      info: {
+        string:
+          'Time (secs) that must pass after the client has determined that\nthere is no DHCP server present before it tries again to\ncontact a DHCP server'
+      },
+      access: {
+        create: true,
+        read: true,
+        update: false,
+        delete: false,
+        execute: false
+      },
+      type: {
+        namespace: 'com:gemds:mds-interfaces',
+        name: 't13'
+      },
+      default: '60'
+    }
+  ]
+})
+
 export const fullExample = JSON.stringify({
   kind: 'container',
   name: 'prefix-delegation',
