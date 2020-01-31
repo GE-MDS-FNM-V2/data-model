@@ -1,9 +1,11 @@
 import { Parser, DATA_MODEL_TYPES } from '../types'
 import { DataType } from '../../classes/DataType'
-import { Map } from '../../classes/Map'
-import { RawYangLeaf, RawYangList, RawYangContainer } from './yangTypes'
+import { Map, KeyDataTypePair } from '../../classes/Map'
+import { RawYangLeaf, RawYangList, RawYangContainer, RawYangCase, RawYangChoice } from './yangTypes'
 import { Leaf } from '../../classes/Leaf'
 import { List } from '../../classes/List'
+import { MIN_CHILDREN_NOT_MET } from '../../types/errors'
+import { Choice } from '../../classes/Choice'
 
 const KIND_KEY = 'kind'
 export class YangParser implements Parser {
@@ -18,6 +20,8 @@ export class YangParser implements Parser {
       return this.parseList(json)
     } else if (currentKind === 'container') {
       return this.parseContainer(json)
+    } else if (currentKind === 'choice') {
+      return this.parseChoice(json)
     } else {
       throw Error(
         `Could not parse: ${JSON.stringify(json)} \nYANG kind "${currentKind}" is not supported`
@@ -55,5 +59,22 @@ export class YangParser implements Parser {
     const newContainer = new Map({ [data.name]: childrenList }, Infinity, data.access)
 
     return newContainer
+  }
+
+  private parseChoice(data: RawYangChoice): DataType {
+    if (data.cases.length === 0) {
+      throw MIN_CHILDREN_NOT_MET
+    }
+
+    let childrenObj: KeyDataTypePair = {}
+
+    data.cases.forEach(caseObj => {
+      if (caseObj.children === '') {
+        childrenObj[caseObj.name] = new Leaf('TODO')
+      } else {
+        childrenObj[caseObj.name] = new List(caseObj.children.map(child => this.parseJSON(child)))
+      }
+    })
+    return new Choice(childrenObj)
   }
 }

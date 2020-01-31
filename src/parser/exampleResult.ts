@@ -381,6 +381,69 @@ export const containerMixedExample = JSON.stringify({
   ]
 })
 
+export const choiceWithOneChild = JSON.stringify({
+  kind: 'choice',
+  name: 'which-image',
+  qname: 'mds_cell:which-image',
+  is_action_input: true,
+  cases: [
+    {
+      kind: 'case',
+      name: 'id',
+      qname: 'mds_cell:id',
+      is_action_input: true,
+      children: [
+        {
+          kind: 'leaf',
+          name: 'id',
+          qname: 'mds_cell:id',
+          info: {
+            string: 'Select the specified firmware location'
+          },
+          is_action_input: true,
+          access: {
+            create: false,
+            read: false,
+            update: true,
+            delete: false,
+            execute: false
+          },
+          is_leafref: true,
+          leafref_target: '/if:interfaces-state/interface/mds_cell:firmware/versions/id',
+          type: { name: 'uint8', primitive: true },
+          deps: [
+            '/if:interfaces-state/interface',
+            '/if:interfaces-state/interface/mds_cell:firmware/versions'
+          ]
+        }
+      ]
+    }
+  ]
+})
+export const choiceWithNoChild = JSON.stringify({
+  kind: 'choice',
+  name: 'which-image',
+  qname: 'mds_cell:which-image',
+  is_action_input: true,
+  cases: []
+})
+
+export const choiceWithCaseThatHasNoChildren = JSON.stringify({
+  kind: 'choice',
+  name: 'which-image',
+  qname: 'mds_cell:which-image',
+  is_action_input: true,
+  cases: [
+    {
+      kind: 'case',
+      name: 'id',
+      qname: 'mds_cell:id',
+      is_action_input: true,
+      children: ''
+    }
+  ]
+})
+
 export const fullExample = JSON.stringify({
   kind: 'container',
   name: 'prefix-delegation',

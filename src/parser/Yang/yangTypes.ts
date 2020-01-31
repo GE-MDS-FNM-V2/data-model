@@ -44,3 +44,20 @@ export type RawYangContainer = {
   children: any[]
   deps: string[]
 }
+
+export type RawYangChoice = {
+  kind: 'choice'
+  name: string
+  qname: string
+  is_action_input: boolean
+  madatory: boolean
+  cases: RawYangCase[]
+}
+
+export type RawYangCase = {
+  kind: 'case'
+  name: string
+  qname: string
+  is_action_input: boolean
+  children: any[] | ''
+}
