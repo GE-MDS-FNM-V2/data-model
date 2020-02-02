@@ -74,3 +74,17 @@ export type RawYangAction = {
   access: PERMISSIONS
   children: any[]
 }
+
+export type RawYangLeafList = {
+  kind: 'leaf-list'
+  name: string
+  qname: string
+  info: {
+    string: string
+  }
+  access: PERMISSIONS
+  type: {
+    namespace: string
+    name: string
+  }
+}

@@ -7,13 +7,15 @@ import {
   RawYangContainer,
   RawYangCase,
   RawYangChoice,
-  RawYangAction
+  RawYangAction,
+  RawYangLeafList
 } from './yangTypes'
 import { Leaf } from '../../classes/Leaf'
 import { List } from '../../classes/List'
 import { MIN_CHILDREN_NOT_MET } from '../../types/errors'
 import { Choice } from '../../classes/Choice'
 import { Action } from '../../classes/Action'
+import { Set } from '../../classes/Set'
 
 const KIND_KEY = 'kind'
 export class YangParser implements Parser {
@@ -32,6 +34,10 @@ export class YangParser implements Parser {
       return this.parseChoice(json)
     } else if (currentKind === 'action') {
       return this.parseAction(json)
+    } else if (currentKind === 'leaf-list') {
+      return this.parseLeafList(json)
+    } else if (currentKind === 'key') {
+      return new Leaf('TODO - this is a key. Do we need to parse it?')
     } else {
       throw Error(
         `Could not parse: ${JSON.stringify(json)} \nYANG kind "${currentKind}" is not supported`
@@ -93,5 +99,15 @@ export class YangParser implements Parser {
       return this.parseJSON(child)
     })
     return new Action(undefined, children, Infinity, data.access)
+  }
+
+  private parseLeafList(data: RawYangLeafList): DataType {
+    return new Map(
+      {
+        [data.name]: new Set([], Infinity, data.access)
+      },
+      Infinity,
+      data.access
+    )
   }
 }

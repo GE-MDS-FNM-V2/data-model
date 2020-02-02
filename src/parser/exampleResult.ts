@@ -500,6 +500,30 @@ export const actionWithChildren = JSON.stringify({
   ]
 })
 
+export const leafListExample = JSON.stringify({
+  kind: 'leaf-list',
+  name: 'operation',
+  qname: 'netmon:operation',
+  info: {
+    string: 'The network monitor operation to use for triggering cell modem restart.'
+  },
+  mandatory: true,
+  access: {
+    create: true,
+    read: true,
+    update: true,
+    delete: true,
+    execute: false
+  },
+  is_leafref: true,
+  leafref_target: '/serv:services/netmon:netmon/operation/name',
+  type: {
+    namespace: 'com:gemds:services:netmon',
+    name: 't1'
+  },
+  deps: ['/serv:services/netmon:netmon/operation']
+})
+
 export const fullExample = JSON.stringify({
   kind: 'container',
   name: 'prefix-delegation',
