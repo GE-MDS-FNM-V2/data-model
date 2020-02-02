@@ -14,6 +14,6 @@ describe('Yang Parser - General', () => {
   })
 
   it('Doesnt fail on valid yang', () => {
-    parser.parse(fullExample)
+    const result = parser.parse(fullExample)
   })
 })
