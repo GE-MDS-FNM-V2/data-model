@@ -32,13 +32,10 @@ describe('Yang Parser - Leaf List', () => {
       execute: false
     }
     expect(type).toEqual(
-      new Map(
-        {
-          operation: new Set([], Infinity, expPermissions)
-        },
-        Infinity,
-        expPermissions
-      )
+      new Map({
+        name: 'operation',
+        permissions: expPermissions
+      })
     )
   })
 })

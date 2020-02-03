@@ -1,5 +1,74 @@
 import { PERMISSIONS } from '../../types/permissions'
-import { DataType } from '../../classes/DataType'
+
+export type RawYangResult = {
+  meta: {
+    namespace: string
+    keypath: string
+    prefix: string
+    types: RawYangMetaTypes
+  }
+  data: RawYangDataType
+}
+
+export type RawYangMetaTypes = {
+  [key: string]: RawYangMetaType
+}
+
+export type RawYangDataType =
+  | RawYangLeaf
+  | RawYangList
+  | RawYangContainer
+  | RawYangChoice
+  | RawYangCase
+  | RawYangAction
+  | RawYangLeafList
+
+export type RawYangMetaType = RawYangINT8 | RawYangUINT8 | RawYangUINT16 | RawYangUINT32
+
+/*********************************
+ * Meta Types
+ ********************************/
+// TODO - the range properties arent valid
+// for example         "com:gemds:wideband:t19": [
+// {
+//   "name": "com:gemds:wideband:t19",
+//   "range": { "value": ["0", ["400", "500"]] }
+
+export type RawYangINT8 = [
+  {
+    name: string
+    range: { value: [[number, number]] }
+  },
+  { name: 'int8' }
+]
+
+export type RawYangUINT8 = [
+  {
+    name: string
+    range: { value: [[number, number]] }
+  },
+  { name: 'uint8' }
+]
+
+export type RawYangUINT16 = [
+  {
+    name: string
+    range: { value: [[number, number]] }
+  },
+  { name: 'uint16' }
+]
+
+export type RawYangUINT32 = [
+  {
+    name: string
+    range: { value: [[number, number]] }
+  },
+  { name: 'uint32' }
+]
+
+/*********************************
+ * Data Types
+ ********************************/
 
 export type RawYangLeaf = {
   kind: 'leaf'
@@ -12,6 +81,7 @@ export type RawYangLeaf = {
     name: string
   }
   default: any
+  value?: any
 }
 
 export type RawYangList = {

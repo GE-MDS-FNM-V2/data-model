@@ -14,18 +14,26 @@ describe('Action', () => {
   const action = jest.fn()
 
   it('Create a DataType with permissions', () => {
-    const type = new Action(action, [], Infinity, testPermissions)
+    const type = new Action({
+      action,
+      permissions: testPermissions
+    })
     expect(type.getPermissions()).toEqual(testPermissions)
   })
 
   it('Create a DataType with children', () => {
-    const children = [new Leaf('asdf'), new Leaf('1234')]
-    const type = new Action(action, children, Infinity, testPermissions)
+    const children = [
+      new Leaf({ value: '1234', name: 'asdf' }),
+      new Leaf({ value: '1234', name: 'asdf' })
+    ]
+    const type = new Action({
+      children
+    })
     expect(type.children).toEqual(children)
   })
 
   it('Will run the function', () => {
-    const type = new Action(action)
+    const type = new Action({ action })
     type.run()
     expect(type.action).toHaveBeenCalled()
   })

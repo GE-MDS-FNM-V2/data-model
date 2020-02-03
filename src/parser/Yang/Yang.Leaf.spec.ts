@@ -17,7 +17,7 @@ describe('Yang Parser', () => {
     }
   })
 
-  it('Parses yang leaf into Map->Leaf', () => {
+  it('Parses yang leaf into Leaf', () => {
     const parsedResult = parser.parse(leafExample)
     const expectedPermissions: PERMISSIONS = {
       create: true,
@@ -26,37 +26,25 @@ describe('Yang Parser', () => {
       delete: true,
       execute: true
     }
-    const expected = new Map(
-      {
-        'retry-interval': new Leaf('TODO', expectedPermissions)
-      },
-      Infinity,
-      expectedPermissions
-    )
+    const expected = new Leaf({
+      name: 'retry-interval'
+    })
     expect(parsedResult).toEqual(expected)
   })
 
-  it('Parses example yang leaf1 into Map->Leaf', () => {
+  it('Parses example yang leaf1 into Leaf with correct permissions', () => {
     const parsedResult = parser.parse(leafExample1)
-    const expected = new Map(
-      {
-        'retry-interval': new Leaf('TODO', {
-          create: true,
-          read: true,
-          update: false,
-          delete: false,
-          execute: false
-        })
-      },
-      Infinity,
-      {
+
+    const expected = new Leaf({
+      name: 'retry-interval',
+      permissions: {
         create: true,
         read: true,
         update: false,
         delete: false,
         execute: false
       }
-    )
+    })
     expect(parsedResult).toEqual(expected)
   })
 })

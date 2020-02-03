@@ -8,7 +8,9 @@ import {
   RawYangCase,
   RawYangChoice,
   RawYangAction,
-  RawYangLeafList
+  RawYangLeafList,
+  RawYangResult,
+  RawYangMetaTypes
 } from './yangTypes'
 import { Leaf } from '../../classes/Leaf'
 import { List } from '../../classes/List'
@@ -22,7 +24,19 @@ export class YangParser implements Parser {
   readonly name = 'YangParser'
   readonly accepts = [DATA_MODEL_TYPES.YANG]
 
-  public parseJSON(json: any): DataType {
+  public parse(data: string): DataType {
+    const json = JSON.parse(data) as RawYangResult
+    // const customTypes = this.parseMeta(json.meta)
+    // return this.parseData(json.data)
+    return this.parseData(json)
+  }
+
+  public parseMeta(json: any): RawYangMetaTypes {
+    // todo - parse meta types
+    return {}
+  }
+
+  public parseData(json: any): DataType {
     const currentKind = json[KIND_KEY]
     if (currentKind === 'leaf') {
       return this.parseLeaf(json)
@@ -37,7 +51,10 @@ export class YangParser implements Parser {
     } else if (currentKind === 'leaf-list') {
       return this.parseLeafList(json)
     } else if (currentKind === 'key') {
-      return new Leaf('TODO - this is a key. Do we need to parse it?')
+      return new Leaf({
+        name: 'key',
+        value: 'TODO - this is a key. Do we need to parse it?'
+      })
     } else {
       throw Error(
         `Could not parse: ${JSON.stringify(json)} \nYANG kind "${currentKind}" is not supported`
@@ -45,36 +62,78 @@ export class YangParser implements Parser {
     }
   }
 
-  public parse(data: string): DataType {
-    const json = JSON.parse(data)
-    return this.parseJSON(json)
-  }
-
   private parseLeaf(data: RawYangLeaf): DataType {
-    return new Map({ [data.name]: new Leaf('TODO', data.access) }, Infinity, data.access)
+    return new Leaf({
+      name: data.name,
+      value: data.value,
+      permissions: data.access
+    })
+    // return new Map({ [data.name]: new Leaf('TODO', data.access) }, Infinity, data.access)
   }
 
   private parseList(data: RawYangList): DataType {
-    const children = data.children.map(child => {
-      return this.parseJSON(child)
-    })
     const maxChildren =
       data.max_elements === 'unbounded' ? Infinity : Number.parseInt(data.max_elements, 10)
-    return new List(children, maxChildren, data.access)
+
+    const childNameValuePairs = data.children
+      .map((child): { name: string; value: any } => {
+        return {
+          name: child.name,
+          value: child
+        }
+      })
+      .map((nameValuePair): { name: string; value: DataType } => {
+        return {
+          name: nameValuePair.name,
+          value: this.parseData(nameValuePair.value)
+        }
+      })
+
+    const newMap = new Map({
+      name: data.name,
+      maxChildren: maxChildren,
+      permissions: data.access
+    })
+    childNameValuePairs.forEach(({ name, value }) => {
+      newMap.set(name, value)
+    })
+
+    return newMap
   }
 
   private parseContainer(data: RawYangContainer): DataType {
-    let children = data.children
-    if (!children) {
-      children = []
-    }
-    children = children.map(child => {
-      return this.parseJSON(child)
-    })
-    const childrenList = new List(children, Infinity, data.access)
-    const newContainer = new Map({ [data.name]: childrenList }, Infinity, data.access)
+    const maxChildren = Infinity
+    if (data.children) {
+      const childNameValuePairs = data.children
+        .map((child): { name: string; value: any } => {
+          return {
+            name: child.name,
+            value: child
+          }
+        })
+        .map((nameValuePair): { name: string; value: DataType } => {
+          return {
+            name: nameValuePair.name,
+            value: this.parseData(nameValuePair.value)
+          }
+        })
 
-    return newContainer
+      const newMap = new Map({
+        name: data.name,
+        maxChildren: maxChildren,
+        permissions: data.access
+      })
+      childNameValuePairs.forEach(({ name, value }) => {
+        newMap.set(name, value)
+      })
+
+      return newMap
+    }
+    return new Map({
+      name: data.name,
+      maxChildren: maxChildren,
+      permissions: data.access
+    })
   }
 
   private parseChoice(data: RawYangChoice): DataType {
@@ -86,28 +145,38 @@ export class YangParser implements Parser {
 
     data.cases.forEach(caseObj => {
       if (caseObj.children === '') {
-        childrenObj[caseObj.name] = new Leaf('TODO')
+        childrenObj[caseObj.name] = new Leaf({
+          name: caseObj.kind,
+          value: 'TODO'
+        })
       } else {
-        childrenObj[caseObj.name] = new List(caseObj.children.map(child => this.parseJSON(child)))
+        childrenObj[caseObj.name] = new List({
+          children: caseObj.children.map(child => this.parseData(child))
+        })
       }
     })
-    return new Choice(childrenObj)
+    return new Choice({
+      children: childrenObj,
+      name: data.name
+    })
   }
 
   private parseAction(data: RawYangAction): DataType {
     const children = data.children.map(child => {
-      return this.parseJSON(child)
+      return this.parseData(child)
     })
-    return new Action(undefined, children, Infinity, data.access)
+    return new Action({
+      name: data.name,
+      children,
+      maxChildren: Infinity,
+      permissions: data.access
+    })
   }
 
   private parseLeafList(data: RawYangLeafList): DataType {
-    return new Map(
-      {
-        [data.name]: new Set([], Infinity, data.access)
-      },
-      Infinity,
-      data.access
-    )
+    return new Map({
+      name: data.name,
+      permissions: data.access
+    })
   }
 }

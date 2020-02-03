@@ -21,24 +21,31 @@ describe('Yang Parser - Action', () => {
       delete: false,
       execute: false
     }
-    const expectedChildren = new Map(
-      {
-        'retry-interval': new Leaf('TODO', expectedPermissions)
-      },
-      Infinity,
-      expectedPermissions
-    )
+
     // I dont have any clue why .toEqual was saying these things were different, but if you stringify them they are identical
-    expect(JSON.stringify(parser.parse(actionWithChildren))).toEqual(
-      JSON.stringify(
-        new Action(undefined, [expectedChildren], Infinity, {
+    expect(parser.parse(actionWithChildren)).toEqual(
+      new Action({
+        name: 'delete-image',
+        permissions: {
           create: false,
           read: false,
           update: false,
           delete: false,
           execute: true
-        })
-      )
+        },
+        children: [
+          new Leaf({
+            name: 'retry-interval',
+            permissions: {
+              create: true,
+              read: true,
+              update: false,
+              delete: false,
+              execute: false
+            }
+          })
+        ]
+      })
     )
   })
 })

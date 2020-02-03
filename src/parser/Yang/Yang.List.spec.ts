@@ -32,40 +32,41 @@ describe('Yang Parser - List', () => {
     expect(result.maxChildren).toEqual(10)
   })
 
-  it('Parses yang list with children with correct children', () => {
+  it('Parses yang list with children with to Map correct children', () => {
     const parsedResult = parser.parse(listExample)
-    const expected = new List(
-      [
-        new Map(
-          {
-            'sub-prefix': new Leaf('TODO', {
-              create: true,
-              read: true,
-              update: true,
-              delete: true,
-              execute: false
-            })
-          },
-          Infinity,
-          { create: true, read: true, update: true, delete: true, execute: false }
-        ),
-        new Map(
-          {
-            'sub-prefix-len': new Leaf('TODO', {
-              create: true,
-              read: true,
-              update: true,
-              delete: true,
-              execute: false
-            })
-          },
-          Infinity,
-          { create: true, read: true, update: true, delete: true, execute: false }
-        )
-      ],
-      Infinity,
-      { create: true, read: true, update: true, delete: true, execute: false }
-    )
+    const children = {
+      'sub-prefix': new Leaf({
+        name: 'sub-prefix',
+        permissions: {
+          create: true,
+          read: true,
+          update: true,
+          delete: true,
+          execute: false
+        }
+      }),
+      'sub-prefix-len': new Leaf({
+        name: 'sub-prefix-len',
+        permissions: {
+          create: true,
+          read: true,
+          update: true,
+          delete: true,
+          execute: false
+        }
+      })
+    }
+    const expected = new Map({
+      children,
+      name: '1234',
+      permissions: {
+        create: true,
+        read: true,
+        update: true,
+        delete: true,
+        execute: false
+      }
+    })
     expect(parsedResult).toEqual(expected)
   })
 })

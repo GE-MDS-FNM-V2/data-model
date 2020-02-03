@@ -5,14 +5,26 @@ import { Map, KeyDataTypePair } from '../Map'
 
 export class Choice extends Map {
   private selectedkey: string
-  constructor(
-    children: KeyDataTypePair,
-    defaultOption?: string,
-    maxChildren: number = Infinity,
+  constructor({
+    name,
+    children,
+    maxChildren = Infinity,
+    permissions = DEFAULT_PERMISSIONS,
+    defaultOption
+  }: {
+    name: string
+    children: KeyDataTypePair
+    defaultOption?: string
+    maxChildren?: number
     permissions?: PERMISSIONS
-  ) {
+  }) {
     /* istanbul ignore next */
-    super(children, maxChildren, permissions)
+    super({
+      children,
+      maxChildren,
+      permissions,
+      name
+    })
 
     if (Object.keys(children).length === 0) {
       throw MIN_CHILDREN_NOT_MET

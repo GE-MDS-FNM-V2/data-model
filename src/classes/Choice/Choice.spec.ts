@@ -14,27 +14,26 @@ describe('Choice', () => {
 
   it('Create a Choice without erroring', () => {
     const type = new Choice({
-      hello: new Leaf('world'),
-      asdf: new Leaf('1234')
+      children: {
+        hello: new Leaf({ name: '1234' }),
+        asdf: new Leaf({ name: '1234' })
+      },
+      name: '1234'
     })
   })
 
   it('Create a Choice with default permissions', () => {
-    const type = new Choice(
-      {
-        hello: new Leaf('world'),
-        asdf: new Leaf('1234')
-      },
-      'hello',
-      100,
-      {
+    const type = new Choice({
+      name: '12234',
+      permissions: {
         create: false,
         read: false,
         update: false,
         delete: false,
         execute: false
-      }
-    )
+      },
+      children: { hello: new Leaf({ name: 'world' }) }
+    })
     expect(type.getPermissions()).toEqual({
       create: false,
       read: false,
@@ -45,40 +44,38 @@ describe('Choice', () => {
   })
 
   it('Create a Choice with correct maxChildren', () => {
-    const type = new Choice(
-      {
-        hello: new Leaf('world'),
-        asdf: new Leaf('1234')
-      },
-      'hello',
-      100
-    )
+    const type = new Choice({
+      maxChildren: 100,
+      name: '1234',
+      children: { hello: new Leaf({ name: 'world' }) }
+    })
     expect(type.maxChildren).toEqual(100)
   })
 
   it('new Choice() has correct children', () => {
     const children = {
-      hello: new Leaf('world'),
-      asdf: new Leaf('1234')
+      hello: new Leaf({ name: '1234' }),
+      asdf: new Leaf({ name: '1234' })
     }
-    const type = new Choice(children)
+    const type = new Choice({ children, name: '123' })
     expect(type.children).toEqual(children)
   })
 
   it('Create a Choice with choices', () => {
-    const type = new Choice({
-      hello: new Leaf('world'),
-      asdf: new Leaf('1234')
-    })
+    const children = {
+      hello: new Leaf({ name: '1234' }),
+      asdf: new Leaf({ name: '1234' })
+    }
+    const type = new Choice({ children, name: '123' })
     expect(type.children).toEqual({
-      asdf: new Leaf('1234'),
-      hello: new Leaf('world')
+      asdf: new Leaf({ name: '1234' }),
+      hello: new Leaf({ name: '1234' })
     })
   })
 
   it('Throws error if initialized without any choices', () => {
     try {
-      const type = new Choice({})
+      const type = new Choice({ name: 'asdf', children: {} })
       expect(false).toEqual(true)
     } catch (error) {
       expect(error).toEqual(MIN_CHILDREN_NOT_MET)
@@ -87,13 +84,14 @@ describe('Choice', () => {
 
   it('Throws error if initialized with invalid default key', () => {
     try {
-      const type = new Choice(
-        {
-          hello: new Leaf('world'),
-          asdf: new Leaf('1234')
+      const type = new Choice({
+        children: {
+          hello: new Leaf({ name: '1234' }),
+          asdf: new Leaf({ name: '1234' })
         },
-        'qwerty'
-      )
+        name: '1234',
+        defaultOption: 'qwerty'
+      })
       expect(false).toEqual(true)
     } catch (error) {
       expect(error).toEqual(KEY_DOES_NOT_EXIST)
@@ -102,26 +100,37 @@ describe('Choice', () => {
 
   it('Returns selected choice', () => {
     const type = new Choice({
-      hello: new Leaf('world'),
-      asdf: new Leaf('1234')
+      children: {
+        hello: new Leaf({ name: '1234567' }),
+        asdf: new Leaf({ name: '1234' })
+      },
+      name: '1234',
+      defaultOption: 'hello'
     }).getChoice()
-    expect(type).toEqual(new Leaf('world'))
+    expect(type).toEqual(new Leaf({ name: '1234567' }))
   })
 
   it('select() selects new choice', () => {
     const type = new Choice({
-      hello: new Leaf('world'),
-      asdf: new Leaf('1234')
+      children: {
+        hello: new Leaf({ name: '1234567' }),
+        asdf: new Leaf({ name: '1234' })
+      },
+      name: '1234',
+      defaultOption: 'hello'
     }).select('asdf')
-    expect(type.getChoice()).toEqual(new Leaf('1234'))
+    expect(type.getChoice()).toEqual(new Leaf({ name: '1234' }))
   })
 
   it('select() with invalid key throws error', () => {
     try {
       const type = new Choice({
-        hello: new Leaf('world'),
-        asdf: new Leaf('1234')
-      }).select('1234')
+        children: {
+          hello: new Leaf({ name: '1234567' }),
+          asdf: new Leaf({ name: '1234' })
+        },
+        name: '1234'
+      }).select('asdf1234')
       expect(false).toEqual(true)
     } catch (error) {
       expect(error).toEqual(KEY_DOES_NOT_EXIST)

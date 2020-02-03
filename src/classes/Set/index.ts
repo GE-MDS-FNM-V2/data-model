@@ -10,7 +10,11 @@ export class Set extends List {
     permissions: PERMISSIONS = DEFAULT_PERMISSIONS
   ) {
     /* istanbul ignore next */
-    super(children, maxChildren, permissions)
+    super({
+      children,
+      maxChildren,
+      permissions
+    })
   }
 
   add(child: DataType) {

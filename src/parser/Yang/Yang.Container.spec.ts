@@ -16,25 +16,16 @@ describe('Yang Parser - Container', () => {
   it('Parses yang empty container with correct permissions', () => {
     const result = parser.parse(emptyContainerExample)
 
-    const expected = new Map(
-      {
-        'prefix-delegation': new List([], Infinity, {
-          create: true,
-          read: true,
-          update: true,
-          delete: true,
-          execute: false
-        })
-      },
-      Infinity,
-      {
+    const expected = new Map({
+      name: 'prefix-delegation',
+      permissions: {
         create: true,
         read: true,
         update: true,
         delete: true,
         execute: false
       }
-    )
+    })
 
     expect(result).toEqual(expected)
   })
@@ -42,49 +33,28 @@ describe('Yang Parser - Container', () => {
   it('Parses yang empty container with one child', () => {
     const result = parser.parse(containerSimpleExample)
 
-    const expected = new Map(
-      {
-        'prefix-delegation': new List(
-          [
-            new Map(
-              {
-                'request-prefix-exclude': new Leaf('TODO', {
-                  create: true,
-                  read: true,
-                  update: true,
-                  delete: true,
-                  execute: false
-                })
-              },
-              Infinity,
-              {
-                create: true,
-                read: true,
-                update: true,
-                delete: true,
-                execute: false
-              }
-            )
-          ],
-          Infinity,
-          {
+    const expected = new Map({
+      name: 'prefix-delegation',
+      permissions: {
+        create: true,
+        read: true,
+        update: true,
+        delete: true,
+        execute: false
+      },
+      children: {
+        'request-prefix-exclude': new Leaf({
+          name: 'request-prefix-exclude',
+          permissions: {
             create: true,
             read: true,
             update: true,
             delete: true,
             execute: false
           }
-        )
-      },
-      Infinity,
-      {
-        create: true,
-        read: true,
-        update: true,
-        delete: true,
-        execute: false
+        })
       }
-    )
+    })
 
     expect(result).toEqual(expected)
   })

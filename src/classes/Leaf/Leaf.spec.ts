@@ -5,7 +5,10 @@ describe('Leaf', () => {
     const value = 'test-value'
     const name = 'test-name'
 
-    const type = new Leaf(value)
+    const type = new Leaf({
+      name,
+      value
+    })
     expect(type.getValue()).toEqual(value)
   })
 
@@ -13,7 +16,10 @@ describe('Leaf', () => {
     const value = [1, 2, 3]
     const name = 'test-name'
 
-    const type = new Leaf(value)
+    const type = new Leaf({
+      name,
+      value
+    })
     expect(type.getValue()).toEqual(value)
   })
 
@@ -21,7 +27,10 @@ describe('Leaf', () => {
     const value = [1, 2, 'asdf']
     const name = 'test-name'
 
-    const type = new Leaf(value)
+    const type = new Leaf({
+      name,
+      value
+    })
     expect(type.getValue()).toEqual(value)
   })
 })

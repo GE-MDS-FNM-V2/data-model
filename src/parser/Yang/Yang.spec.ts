@@ -1,12 +1,12 @@
 import { YangParser } from './index'
-import { fullExample } from '../exampleResult'
+import { servicesResult } from '../servicesResults'
 
 describe('Yang Parser - General', () => {
   const parser = new YangParser()
 
   it('Throws error when parsing invalid yang', () => {
     try {
-      parser.parseJSON({ asdfasdf: 'asdfasdfasdfasdfasdf' })
+      parser.parseData({ asdfasdf: 'asdfasdfasdfasdfasdf' })
       expect(false).toBeTruthy()
     } catch (error) {
       expect(error).toBeTruthy()
@@ -14,6 +14,6 @@ describe('Yang Parser - General', () => {
   })
 
   it('Doesnt fail on valid yang', () => {
-    const result = parser.parse(fullExample)
+    const result = parser.parse(servicesResult)
   })
 })
