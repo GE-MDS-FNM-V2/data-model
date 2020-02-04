@@ -5,6 +5,8 @@ import { List } from './classes/List'
 import { Map } from './classes/Map'
 import { Set } from './classes/Set'
 import { Choice } from './classes/Choice'
+import * as Parser from './parser'
+import * as Operations from './operations'
 
 export default {
   Action,
@@ -13,5 +15,7 @@ export default {
   List,
   Map,
   Set,
-  Choice
+  Choice,
+  Parser,
+  Operations
 }

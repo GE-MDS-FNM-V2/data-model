@@ -31,10 +31,10 @@ export class YangParser implements Parser {
     return this.parseData(json)
   }
 
-  public parseMeta(json: any): RawYangMetaTypes {
-    // todo - parse meta types
-    return {}
-  }
+  // public parseMeta(json: any): RawYangMetaTypes {
+  //   // todo - parse meta types
+  //   return {}
+  // }
 
   public parseData(json: any): DataType {
     const currentKind = json[KIND_KEY]
