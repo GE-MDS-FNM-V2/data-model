@@ -3,8 +3,7 @@
   "version": "0.0.0-development",
   "description": "",
   "keywords": [],
-  "main": "dist/index.umd.js",
-  "module": "dist/index.es5.js",
+  "main": "dist/bundle.js",
   "typings": "dist/types/data-model.d.ts",
   "files": [
     "dist/**/*.*"
@@ -33,7 +32,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run docs && git add docs && lint-staged",
+      "pre-commit": "npm run docs && lint-staged",
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
       "commit-msg": "commitlint -E  HUSKY_GIT_PARAMS"
     }
@@ -49,8 +48,7 @@
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "config": {
