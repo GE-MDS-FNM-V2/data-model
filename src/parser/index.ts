@@ -1,5 +1,3 @@
-import { YangParser } from './Yang'
+import { YangParser as ImportedYangParser } from './Yang'
 
-export default {
-  YangParser
-}
+export const YangParser = ImportedYangParser
