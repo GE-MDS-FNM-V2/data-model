@@ -162,7 +162,8 @@ export class YangParser implements Parser {
   }
 
   private parseAction(data: RawYangAction): DataType {
-    const children = data.children.map(child => {
+    const rawChildren = data.children || []
+    const children = rawChildren.map(child => {
       return this.parseData(child)
     })
     return new Action({
