@@ -3,6 +3,8 @@ on: push
 jobs:
   CI:
     runs-on: ubuntu-latest
+    env:
+      CI: true # this is needed to ignore husky hooks
     steps:
     - uses: actions/checkout@master
     - uses: actions/setup-node@master
@@ -23,3 +25,11 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Generate docs
+      run: yarn docs
+    - name: Version docs
+      uses: bobrown101/version-docs@v2.1.9
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        doc-location: docs
+        doc-branch: gh-pages

@@ -74,8 +74,8 @@ export class YangParser implements Parser {
   private parseList(data: RawYangList): DataType {
     const maxChildren =
       data.max_elements === 'unbounded' ? Infinity : Number.parseInt(data.max_elements, 10)
-
-    const childNameValuePairs = data.children
+    const children = data.children || []
+    const childNameValuePairs = children
       .map((child): { name: string; value: any } => {
         return {
           name: child.name,

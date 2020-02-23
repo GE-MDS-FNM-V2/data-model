@@ -85,7 +85,7 @@ export type RawYangLeaf = {
 }
 
 export type RawYangList = {
-  kind: 'leaf'
+  kind: 'list'
   name: string
   qname: string
   info: any
@@ -98,7 +98,7 @@ export type RawYangList = {
     namespace: string
     name: string
   }
-  children: any[]
+  children?: any[]
 }
 
 export type RawYangContainer = {
