@@ -1,6 +1,6 @@
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
 import { DataType, IDataType } from '../DataType'
-import { IDataTypeKind } from '..'
+import { IDataTypeKind } from '../DataType'
 
 type LeafType = number | string | boolean | null | any[]
 

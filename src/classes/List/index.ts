@@ -3,7 +3,7 @@ import { DataType, IDataType } from '../DataType'
 import { EXCEEDS_MAX_CHILDREN } from '../../types/errors'
 import { MapFunction, FilterFunction } from '../../types/classFunctions'
 import { EnumerableDataType } from '../../types/EnumerableDataType'
-import { IDataTypeKind } from '..'
+import { IDataTypeKind } from '../DataType'
 
 export interface IList extends IDataType, EnumerableDataType {
   add(child: DataType): DataType
