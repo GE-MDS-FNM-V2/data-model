@@ -2,7 +2,7 @@ import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
 import { MIN_CHILDREN_NOT_MET, KEY_DOES_NOT_EXIST } from '../../types/errors'
 
 import { Map, KeyDataTypePair, IMap } from '../Map'
-import { IDataTypeKind } from '../types'
+import { IDataTypeKind } from '..'
 import { DataType } from '../DataType'
 
 export interface IChoice extends IMap {

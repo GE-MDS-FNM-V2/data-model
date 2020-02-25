@@ -1,5 +1,5 @@
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
-import { IDataTypeKind } from '../types'
+import { IDataTypeKind } from '..'
 
 export interface IDataType {
   getPermissions: () => PERMISSIONS
