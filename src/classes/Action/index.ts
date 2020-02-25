@@ -1,7 +1,7 @@
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
 import { List } from '../List'
 import { DataType } from '../DataType'
-import { IDataTypeKind } from '..'
+import { IDataTypeKind } from '../DataType'
 
 export interface IAction extends List {
   readonly action: Function | undefined

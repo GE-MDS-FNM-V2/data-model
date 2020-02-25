@@ -1,5 +1,14 @@
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
-import { IDataTypeKind } from '..'
+
+export enum IDataTypeKind {
+  Action = 'Action',
+  Choice = 'Choice',
+  DataType = 'DataType',
+  Leaf = 'Leaf',
+  List = 'List',
+  Map = 'Map',
+  Set = 'Set'
+}
 
 export interface IDataType {
   getPermissions: () => PERMISSIONS
