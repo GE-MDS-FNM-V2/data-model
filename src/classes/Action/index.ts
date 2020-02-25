@@ -1,11 +1,17 @@
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
 import { List } from '../List'
 import { DataType } from '../DataType'
+import { IDataTypeKind } from '../types'
 
-export class Action extends List {
+export interface IAction extends List {
   readonly action: Function | undefined
   numberRuns: number
-  objectType: string
+  run(): void
+}
+export class Action extends List implements IAction {
+  readonly action: Function | undefined
+  numberRuns: number
+
   constructor({
     action,
     children = [],
@@ -25,7 +31,7 @@ export class Action extends List {
       permissions,
       name
     })
-    this.objectType = 'Action'
+    this.objectType = IDataTypeKind.Action
     this.action = action
     this.numberRuns = 0
   }

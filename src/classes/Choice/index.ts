@@ -1,9 +1,15 @@
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
 import { MIN_CHILDREN_NOT_MET, KEY_DOES_NOT_EXIST } from '../../types/errors'
 
-import { Map, KeyDataTypePair } from '../Map'
+import { Map, KeyDataTypePair, IMap } from '../Map'
+import { IDataTypeKind } from '../types'
+import { DataType } from '../DataType'
 
-export class Choice extends Map {
+export interface IChoice extends IMap {
+  getChoice(): DataType
+  select(key: string): IChoice
+}
+export class Choice extends Map implements IChoice {
   private selectedkey: string
   constructor({
     name,
@@ -18,13 +24,13 @@ export class Choice extends Map {
     maxChildren?: number
     permissions?: PERMISSIONS
   }) {
-    /* istanbul ignore next */
     super({
       children,
       maxChildren,
       permissions,
       name
     })
+    this.objectType = IDataTypeKind.Choice
 
     if (Object.keys(children).length === 0) {
       throw MIN_CHILDREN_NOT_MET

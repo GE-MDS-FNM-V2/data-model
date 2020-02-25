@@ -6,14 +6,11 @@ export interface EnumerableDataType {
   maxChildren: number
   length: number
 
-
-// For List / Set
+  // For List / Set
   add(child: DataType): DataType
   map(mapFunc: MapFunction): EnumerableDataType
   filter(
     filterFunc: (value: DataType, index: number, array: DataType[]) => boolean
   ): EnumerableDataType
   contains(item: DataType): boolean
-
-
 }

@@ -1,16 +1,25 @@
-import { DataType } from '../DataType'
+import { DataType, IDataType } from '../DataType'
 import { EXCEEDS_MAX_CHILDREN } from '../../types/errors'
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
+import { IDataTypeKind } from '../types'
+
+export interface IMap extends IDataType {
+  set(key: string, value: DataType): void
+  get(key: string): DataType
+  contains(key: string): boolean
+  keys(): string[]
+  values(): DataType[]
+  entries(): [string, DataType][]
+}
 
 export interface KeyDataTypePair {
   [key: string]: DataType
 }
 
-export class Map extends DataType {
+export class Map extends DataType implements IMap {
   children: KeyDataTypePair
   maxChildren: number
   length: number
-  objectType: string
 
   constructor({
     children = {},
@@ -24,7 +33,7 @@ export class Map extends DataType {
     name: string
   }) {
     super(permissions)
-    this.objectType = 'Map'
+    this.objectType = IDataTypeKind.Map
     this.children = children
     this.maxChildren = maxChildren
     this.length = 0
