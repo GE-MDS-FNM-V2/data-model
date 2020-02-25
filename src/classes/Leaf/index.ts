@@ -1,12 +1,18 @@
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
-import { DataType } from '../DataType'
+import { DataType, IDataType } from '../DataType'
+import { IDataTypeKind } from '../types'
 
 type LeafType = number | string | boolean | null | any[]
 
-export class Leaf extends DataType {
-  value: LeafType | undefined
+export interface ILeaf extends IDataType {
   name: string
-  objectType: string
+  getValue(): LeafType | undefined
+}
+
+export class Leaf extends DataType implements ILeaf {
+  private value: LeafType | undefined
+  name: string
+
   constructor({
     name,
     value,
@@ -17,7 +23,7 @@ export class Leaf extends DataType {
     permissions?: PERMISSIONS
   }) {
     super(permissions)
-    this.objectType = 'Leaf'
+    this.objectType = IDataTypeKind.Leaf
     this.name = name
     this.value = value
   }

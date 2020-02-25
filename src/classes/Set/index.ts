@@ -1,7 +1,12 @@
-import { List } from '../List'
+import { List, IList } from '../List'
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
 import { DataType } from '../DataType'
 import { CHILD_ALREADY_EXISTS } from '../../types/errors'
+import { IDataTypeKind } from '../types'
+
+export interface ISet extends IList {
+  add(child: DataType): DataType
+}
 
 export class Set extends List {
   constructor(
@@ -9,12 +14,13 @@ export class Set extends List {
     maxChildren: number = Infinity,
     permissions: PERMISSIONS = DEFAULT_PERMISSIONS
   ) {
-    /* istanbul ignore next */
     super({
       children,
       maxChildren,
       permissions
     })
+
+    this.objectType = IDataTypeKind.Set
   }
 
   add(child: DataType) {

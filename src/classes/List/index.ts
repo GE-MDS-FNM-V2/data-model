@@ -1,14 +1,22 @@
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
-import { DataType } from '../DataType'
+import { DataType, IDataType } from '../DataType'
 import { EXCEEDS_MAX_CHILDREN } from '../../types/errors'
-import { MapFunction } from '../../types/classFunctions'
+import { MapFunction, FilterFunction } from '../../types/classFunctions'
 import { EnumerableDataType } from '../../types/EnumerableDataType'
+import { IDataTypeKind } from '../types'
 
-export class List extends DataType implements EnumerableDataType {
+export interface IList extends IDataType, EnumerableDataType {
+  add(child: DataType): DataType
+  map(mapFunc: MapFunction): List
+  filter(filterFunc: FilterFunction): List
+  contains(item: DataType): boolean
+}
+
+export class List extends DataType implements IList {
   children: DataType[]
   maxChildren: number
   length: number
-  objectType: string
+
   constructor({
     children = [],
     maxChildren = Infinity,
@@ -24,7 +32,7 @@ export class List extends DataType implements EnumerableDataType {
       throw EXCEEDS_MAX_CHILDREN
     }
     super(permissions)
-    this.objectType = 'List'
+    this.objectType = IDataTypeKind.List
     this.children = children
     this.maxChildren = maxChildren
     this.length = this.children.length
@@ -52,7 +60,7 @@ export class List extends DataType implements EnumerableDataType {
     })
   }
 
-  filter(filterFunc: (value: DataType, index: number, array: DataType[]) => boolean) {
+  filter(filterFunc: FilterFunction) {
     const resultArray = []
     for (let index = 0; index < this.children.length; index++) {
       if (filterFunc(this.children[index], index, this.children)) {
