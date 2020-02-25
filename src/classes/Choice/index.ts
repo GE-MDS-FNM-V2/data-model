@@ -1,8 +1,7 @@
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
 import { MIN_CHILDREN_NOT_MET, KEY_DOES_NOT_EXIST } from '../../types/errors'
 import { Map, KeyDataTypePair, IMap } from '../Map'
-import { IDataTypeKind } from '../DataType'
-import { DataType } from '../DataType'
+import { DataType, IDataTypeKind } from '../DataType'
 
 export interface IChoice extends IMap {
   getChoice(): DataType
