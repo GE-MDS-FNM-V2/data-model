@@ -1,11 +1,6 @@
 import { DataType } from '../classes/DataType'
 import { Map } from '../classes/Map'
-import { Choice } from '../classes/Choice'
-import { List } from '../classes/List'
-import { Set } from '../classes/Set'
-import { Leaf } from '../classes/Leaf'
 
-type treeType = Map | Choice | List | Set
 export const getPath = (node: DataType, path: string[], currentlyAtPath?: string[]): DataType => {
   if (path.length === 0) {
     return node

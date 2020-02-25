@@ -1,20 +1,17 @@
-import { Action } from './Action'
-import { Choice } from './Choice'
-import { DataType } from './DataType'
-import { Leaf } from './Leaf'
-import { List } from './List'
-import { Map } from './Map'
-import { Set } from './Set'
+export { Action, IAction } from './Action'
+export { Choice, IChoice } from './Choice'
+export { DataType, IDataType } from './DataType'
+export { Leaf, ILeaf } from './Leaf'
+export { List, IList } from './List'
+export { Map, IMap } from './Map'
+export { Set, ISet } from './Set'
 
-import * as Types from './types'
-export const DataModelClasses = {
-  Action,
-  Choice,
-  DataType,
-  Leaf,
-  List,
-  Map,
-  Set
+export enum IDataTypeKind {
+  Action = 'Action',
+  Choice = 'Choice',
+  DataType = 'DataType',
+  Leaf = 'Leaf',
+  List = 'List',
+  Map = 'Map',
+  Set = 'Set'
 }
-
-export const DataModelTypes = Types
