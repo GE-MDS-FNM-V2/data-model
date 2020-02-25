@@ -1,7 +1,6 @@
-import { DataType, IDataType } from '../DataType'
+import { DataType, IDataType, IDataTypeKind } from '../DataType'
 import { EXCEEDS_MAX_CHILDREN } from '../../types/errors'
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
-import { IDataTypeKind } from '../DataType'
 
 export interface IMap extends IDataType {
   set(key: string, value: DataType): void

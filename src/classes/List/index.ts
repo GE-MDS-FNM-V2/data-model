@@ -1,9 +1,8 @@
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
-import { DataType, IDataType } from '../DataType'
+import { DataType, IDataType, IDataTypeKind } from '../DataType'
 import { EXCEEDS_MAX_CHILDREN } from '../../types/errors'
 import { MapFunction, FilterFunction } from '../../types/classFunctions'
 import { EnumerableDataType } from '../../types/EnumerableDataType'
-import { IDataTypeKind } from '../DataType'
 
 export interface IList extends IDataType, EnumerableDataType {
   add(child: DataType): DataType
