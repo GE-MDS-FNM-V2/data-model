@@ -1,6 +1,9 @@
+import debug from 'debug'
 import { DataType, IDataType, IDataTypeKind } from '../DataType'
 import { EXCEEDS_MAX_CHILDREN } from '../../types/errors'
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
+
+const log = debug('ge-fnm:data-model:classes:Map')
 
 export interface IMap extends IDataType {
   set(key: string, value: DataType): void
@@ -39,9 +42,11 @@ export class Map extends DataType implements IMap {
     Object.keys(children).forEach(key => {
       this.set(key, children[key])
     })
+    log('Created map', this)
   }
 
   set(key: string, value: DataType) {
+    log('Setting key', key, ' to the value', value, ' on the map', this)
     if (this.keys().length + 1 > this.maxChildren) {
       throw EXCEEDS_MAX_CHILDREN
     } else {

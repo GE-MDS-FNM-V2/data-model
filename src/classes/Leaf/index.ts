@@ -1,5 +1,8 @@
+import debug from 'debug'
 import { PERMISSIONS } from '../../types/permissions'
 import { DataType, IDataType, IDataTypeKind } from '../DataType'
+
+const log = debug('ge-fnm:data-model:classes:Leaf')
 
 type LeafType = number | string | boolean | null | any[]
 
@@ -25,6 +28,8 @@ export class Leaf extends DataType implements ILeaf {
     this.objectType = IDataTypeKind.Leaf
     this.name = name
     this.value = value
+
+    log('Creating Leaf with the name of', name, ' and the value of ', value)
   }
 
   getValue() {

@@ -50,15 +50,26 @@ const tree = new Map({"hello": child})
 console.log(tree)
 ```
 
-### Documentation
-Documentation can be found here - https://ge-mds-fnm-v2.github.io/data-model/
+## Debugging
+We've added in optional logging to this module. You can enable it by setting the environment variable DEBUG:
+```sh
+DEBUG=ge-fnm:data-model* yarn #to enable logging for only the data-model module
+-or-
+DEBUG=ge-fnm:data-model:classes:Action # to enable logging only for the Action class
+-or-
+DEBUG=ge-fnm:data-model:classes:* # to enable logging for all classes
+-or-
+DEBUG=ge-fnm:data-model:parser:yang # to enable logging only for the yang parser
+-or
+DEBUG=ge-fnm:data-model:parser:* # to enable logging for all data-model parsers
+-or
+DEBUG=ge-fnm:data-model:operations # to enable logging for data-model operations such as getPath
+-or-
+DEBUG=ge-fnm:* yarn # for all logging related to ge-fnm
+-or-
+DEBUG=* yarn # enable logging for all installed node_modules that look for the env var DEBUG - please note, this is a lot. You probably dont want this
+
+```
 
 ## I want to work on this project
 Please see [CONTRIBUTING.md](CONTRIBUTING.md)
-
-
-### Excluding peerDependencies
-
-On library development, one might want to set some peer dependencies, and thus remove those from the final bundle. You can see in [Rollup docs](https://rollupjs.org/#peer-dependencies) how to do that.
-
-Good news: the setup is here for you, you must only include the dependency name in `external` property within `rollup.config.js`. For example, if you want to exclude `lodash`, just write there `external: ['lodash']`.
