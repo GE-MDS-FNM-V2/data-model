@@ -1,5 +1,8 @@
+import debug from 'debug'
 import { DataType } from '../classes/DataType'
 import { Map } from '../classes/Map'
+
+const log = debug('ge-fnm:data-model:operations')
 
 export const getPath = (node: DataType, path: string[], currentlyAtPath?: string[]): DataType => {
   if (path.length === 0) {
@@ -12,8 +15,7 @@ export const getPath = (node: DataType, path: string[], currentlyAtPath?: string
     )
   } else {
     const [searchName, ...restOfPath] = path
-    // const nodeType = tree.getName()
-    // if (nodeType === 'Map') {
+    log('Seaching for property', searchName, ' within the path', path)
     const map = node as Map
     if (!map.contains(searchName)) {
       const availablePaths = Object.keys(map.children).join(', ')
@@ -23,8 +25,5 @@ export const getPath = (node: DataType, path: string[], currentlyAtPath?: string
       const newPath = currentlyAtPath ? [...currentlyAtPath, searchName] : [searchName]
       return getPath(map.get(searchName), restOfPath, newPath)
     }
-    // } else {
-    //   throw new Error(`GetPath does not support the type ${nodeType} located at ${currentlyAtPath}`)
-    // }
   }
 }

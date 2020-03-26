@@ -1,8 +1,11 @@
+import debug from 'debug'
 import { PERMISSIONS, DEFAULT_PERMISSIONS } from '../../types/permissions'
 import { DataType, IDataType, IDataTypeKind } from '../DataType'
 import { EXCEEDS_MAX_CHILDREN } from '../../types/errors'
 import { MapFunction, FilterFunction } from '../../types/classFunctions'
 import { EnumerableDataType } from '../../types/EnumerableDataType'
+
+const log = debug('ge-fnm:data-model:classes:List')
 
 export interface IList extends IDataType, EnumerableDataType {
   add(child: DataType): DataType
@@ -28,6 +31,7 @@ export class List extends DataType implements IList {
     name?: string
   }) {
     if (children.length > maxChildren) {
+      log('The number of provided children exceeds the maxChildren provided')
       throw EXCEEDS_MAX_CHILDREN
     }
     super(permissions)
@@ -35,9 +39,11 @@ export class List extends DataType implements IList {
     this.children = children
     this.maxChildren = maxChildren
     this.length = this.children.length
+    log('Created a List', this)
   }
 
   add(child: DataType) {
+    log('Adding the child', child, ' to the list', this)
     if (this.children.length + 1 > this.maxChildren) {
       throw EXCEEDS_MAX_CHILDREN
     } else {

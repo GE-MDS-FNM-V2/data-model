@@ -1,3 +1,4 @@
+import debug from 'debug'
 import { Parser, DATA_MODEL_TYPES } from '../types'
 import { DataType } from '../../classes/DataType'
 import { Map, KeyDataTypePair } from '../../classes/Map'
@@ -19,6 +20,8 @@ import { Choice } from '../../classes/Choice'
 import { Action } from '../../classes/Action'
 import { Set } from '../../classes/Set'
 
+const log = debug('ge-fnm:data-model:parser:yang')
+
 const KIND_KEY = 'kind'
 export class YangParser implements Parser {
   readonly name = 'YangParser'
@@ -26,15 +29,18 @@ export class YangParser implements Parser {
 
   public parse(data: string): DataType {
     const json = JSON.parse(data) as RawYangResult
-    // const customTypes = this.parseMeta(json.meta)
-    // return this.parseData(json.data)
+
+    /**
+     * eventually when custom type parsing is enabled in the data model,
+     * you will need to parse out the 'meta' property first,
+     * and then feed in the parsed custom types to the parseData function
+     *
+     * Until then we will assume the 'data' variable is only the
+     * 'data' field of the jsonrpc response
+     */
+
     return this.parseData(json)
   }
-
-  // public parseMeta(json: any): RawYangMetaTypes {
-  //   // todo - parse meta types
-  //   return {}
-  // }
 
   public parseData(json: any): DataType {
     const currentKind = json[KIND_KEY]
@@ -51,6 +57,9 @@ export class YangParser implements Parser {
     } else if (currentKind === 'leaf-list') {
       return this.parseLeafList(json)
     } else if (currentKind === 'key') {
+      log(
+        'TODO - this is a key type - we are still not sure if this is needed, but are leaving in this todo just in case it is in the future'
+      )
       return new Leaf({
         name: 'key',
         value: 'TODO - this is a key. Do we need to parse it?'
@@ -63,12 +72,12 @@ export class YangParser implements Parser {
   }
 
   private parseLeaf(data: RawYangLeaf): DataType {
+    log('Parsing the following data into a Leaf', data)
     return new Leaf({
       name: data.name,
       value: data.value,
       permissions: data.access
     })
-    // return new Map({ [data.name]: new Leaf('TODO', data.access) }, Infinity, data.access)
   }
 
   private parseList(data: RawYangList): DataType {
@@ -97,7 +106,7 @@ export class YangParser implements Parser {
     childNameValuePairs.forEach(({ name, value }) => {
       newMap.set(name, value)
     })
-
+    log('Parsed the yang list:', data, 'into a Map:', newMap)
     return newMap
   }
 
@@ -126,9 +135,10 @@ export class YangParser implements Parser {
       childNameValuePairs.forEach(({ name, value }) => {
         newMap.set(name, value)
       })
-
+      log('Parsed the yang container: ', data, 'into the Map:', newMap)
       return newMap
     }
+    log('Found an empty container', data, ' so returning a default map')
     return new Map({
       name: data.name,
       maxChildren: maxChildren,
@@ -155,10 +165,13 @@ export class YangParser implements Parser {
         })
       }
     })
-    return new Choice({
+
+    const choice = new Choice({
       children: childrenObj,
       name: data.name
     })
+    log('Parsed yang choice:', data, ' into a Choice:', choice)
+    return choice
   }
 
   private parseAction(data: RawYangAction): DataType {
@@ -166,15 +179,21 @@ export class YangParser implements Parser {
     const children = rawChildren.map(child => {
       return this.parseData(child)
     })
-    return new Action({
+    const action = new Action({
       name: data.name,
       children,
       maxChildren: Infinity,
       permissions: data.access
     })
+    log('Parsed yang action:', data, ' into Action:', action)
+    return action
   }
 
   private parseLeafList(data: RawYangLeafList): DataType {
+    log(
+      'TODO - parse leaf list currently does not support children. If the following data has children, youre going to be missing data',
+      data
+    )
     return new Map({
       name: data.name,
       permissions: data.access
